@@ -22,6 +22,31 @@ const portfolioData = [
     },
 ];
 
+const techStackItems = [
+    { icon: "fab fa-react", name: "React", desc: "Frontend" },
+    { icon: "fab fa-vuejs", name: "Vue.js", desc: "SPA" },
+    { icon: "fab fa-node-js", name: "Node.js", desc: "Backend" },
+    { icon: "fab fa-python", name: "Python", desc: "AI/ML" },
+    { icon: "fab fa-php", name: "PHP", desc: "Laravel" },
+    { icon: "fas fa-cloud", name: "Docker", desc: "DevOps" },
+    { icon: "fas fa-database", name: "PostgreSQL", desc: "Базы данных" },
+    { icon: "fab fa-figma", name: "Figma", desc: "UI/UX" }
+];
+
+function renderTechStack() {
+    const container = document.getElementById('techGrid');
+    if (container) {
+        container.innerHTML = techStackItems.map(tech => `
+        <div class="tech-item">
+          <div class="tech-icon"><i class="${tech.icon}"></i></div>
+          <h4>${tech.name}</h4>
+          <p>${tech.desc}</p>
+        </div>
+      `).join('');
+    }
+}
+renderTechStack();
+
 const portfolioGrid = document.getElementById('portfolioGrid');
 function buildPortfolio() {
     portfolioGrid.innerHTML = '';

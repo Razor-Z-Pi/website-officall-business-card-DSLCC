@@ -1,129 +1,167 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>ООО «Цифровые решения» IT-компания</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style/normalize.css">
     <link rel="stylesheet" href="./style/style.css">
-    </head>
+</head>
 
-    <body>
-        <div class="bg-animate"></div>
-        <div class="orb orb1"></div>
-        <div class="orb orb2"></div>
+<body>
+    <div class="bg-animate"></div>
+    <div class="moving-gradient"></div>
+    <div class="grid-lines"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
 
-        <header>
+    <header>
         <div class="container">
             <div class="navbar">
-            <div class="logo">
-                <h1>Цифровые<span style="color:#2d67d4;"> решения</span></h1>
-                <p>ИТ-интеграция & инновации</p>
-            </div>
-            <div class="burger" id="burgerMenu">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="nav-link active">Главная</a></li>
-                <li><a href="#services" class="nav-link">Услуги</a></li>
-                <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
-                <li><a href="#contact" class="nav-link">Контакты</a></li>
-            </ul>
+                <div class="logo">
+                    <h1>Цифровые<span style="color:#2d67d4;"> решения</span></h1>
+                    <p>IT-интеграция & инновации</p>
+                </div>
+                <div class="burger" id="burgerMenu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" data-page="home" class="nav-link active">Главная</a></li>
+                    <li><a href="#services" class="nav-link">Услуги</a></li>
+                    <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
+                    <li><a href="#contact" class="nav-link">Контакты</a></li>
+                    <li><a href="./projects.html" data-page="projects">Собственные решения</a></li>
+                </ul>
             </div>
         </div>
-        </header>
+    </header>
 
-        <main>
+    <main>
         <section id="home">
             <div class="container">
-            <div class="hero">
-                <div class="hero-content reveal">
-                <h1>Создаём <span class="gradient-text">ИТ-решения</span> которые двигают бизнес</h1>
-                <p>ООО «Цифровые решения» — разработка сайтов, порталов, корпоративных систем и продвижение проектов. Полный цикл от идеи до масштабирования.</p>
-                <a href="#contact" class="btn btn-primary">Обсудить проект -></a>
-                <div class="hero-stats">
-                    <div class="stat"><span>50+</span><br>Проектов</div>
-                    <div class="stat"><span>24/7</span><br>Поддержка</div>
-                    <div class="stat"><span>100%</span><br>Результат</div>
-                </div>
-                </div>
-                <div class="hero-visual reveal">
-                <img class="img-title" src="./image/titleDLCC.jpg" alt="ООО Цифровые решения">
+                <div class="hero">
+                    <div class="hero-content reveal">
+                        <h1>Создаём <span class="gradient-text">IT-решения</span> которые двигают бизнес</h1>
+                        <p>
+                            ООО «Цифровые решения» — разработка сайтов, порталов, корпоративных систем и продвижение
+                            проектов. Полный цикл от идеи до масштабирования.
+                        </p>
+                        <a href="#contact" class="btn btn-primary">Обсудить проект -></a>
+                        <div class="hero-stats">
+                            <div class="stat"><span>20+</span><br>Проектов</div>
+                            <div class="stat"><span>24/7</span><br>Поддержка</div>
+                            <div class="stat"><span>100%</span><br>Результат</div>
+                        </div>
+                    </div>
+                    <div class="hero-visual reveal">
+                        <img class="img-title" src="./image/titleDLCC.jpg" alt="ООО Цифровые решения">
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <section id="tech">
+            <div class="container">
+                <div class="reveal">
+                    <h2 class="section-title">Технологический стек</h2>
+                    <p class="section-sub">Современные инструменты, которые мы используем для создания продуктов
+                        премиум-класса</p>
+                </div>
+                <div class="tech-stack reveal">
+                    <div class="tech-grid" id="techGrid"></div>
+                </div>
             </div>
         </section>
 
         <section id="services">
             <div class="container">
-            <div class="reveal">
-                <h2 class="section-title">Наши услуги</h2>
-                <p class="section-sub">Полный стек современных технологий для вашего бизнеса</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card reveal"><div class="service-icon"><i class="fas fa-globe"></i></div><h3>Web-разработка</h3><p>Сайты, SPA, CRM-порталы с высокой производительностью и адаптивным дизайном.</p></div>
-                <div class="service-card reveal"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><h3>Мобильные приложения</h3><p>iOS & Android, Flutter / React Native, бесшовный пользовательский опыт.</p></div>
-                <div class="service-card reveal"><div class="service-icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>Облачные решения</h3><p>DevOps, AWS/Azure, масштабируемая архитектура и CI/CD пайплайны.</p></div>
-                <div class="service-card reveal"><div class="service-icon"><i class="fas fa-brain"></i></div><h3>Продижение</h3><p>Социальные-медиа продвижения, аналитика.</p></div>
-            </div>
+                <div class="reveal">
+                    <h2 class="section-title">Наши услуги</h2>
+                    <p class="section-sub">Полный стек современных технологий для вашего бизнеса</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-globe"></i></div>
+                        <h3>Web-разработка</h3>
+                        <p>Сайты, SPA, CRM-порталы с высокой производительностью и адаптивным дизайном.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3>Мобильные приложения</h3>
+                        <p>iOS & Android, Flutter / React Native, бесшовный пользовательский опыт.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                        <h3>Облачные решения</h3>
+                        <p>DevOps, AWS/Azure, масштабируемая архитектура и CI/CD пайплайны.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Продижение</h3>
+                        <p>Социальные-медиа продвижения, аналитика.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="portfolio">
             <div class="container">
-            <div class="reveal">
-                <h2 class="section-title">Наше портфолио</h2>
-                <p class="section-sub">Реальные проекты, которые меняют рынок — переходите и изучайте</p>
-            </div>
-            <div class="portfolio-grid" id="portfolioGrid">
-                <!-- dynamic from js, but we hardcode with demo links + placeholder -->
-            </div>
+                <div class="reveal">
+                    <h2 class="section-title">Наше портфолио</h2>
+                    <p class="section-sub">Реальные проекты, которые меняют рынок — переходите и изучайте</p>
+                </div>
+                <div class="portfolio-grid" id="portfolioGrid"></div>
             </div>
         </section>
 
-        <!-- Contact -->
         <section id="contact">
             <div class="container">
-            <div class="reveal">
-                <h2 class="section-title">Свяжитесь с нами</h2>
-                <p class="section-sub">Готовы воплотить вашу идею в жизнь? Напишите или позвоните.</p>
-            </div>
-            <div class="contact-flex">
-                <div class="contact-info reveal">
-                <h3>ООО «Цифровые решения»</h3>
-                <p>Инновационный ИТ-партнёр для бизнеса любого масштаба.</p>
-                <div class="contact-details">
-                    <p><i class="fas fa-map-marker-alt"></i> г. Абакан, ул. Советская, д. 73, 3 этаж</p>
-                    <p><i class="fas fa-phone-alt"></i> +7 (391) 224-81-58</p>
-                    <p><i class="fas fa-envelope"></i> e@digital19.ru</p>
+                <div class="reveal">
+                    <h2 class="section-title">Свяжитесь с нами</h2>
+                    <p class="section-sub">Готовы воплотить вашу идею в жизнь? Напишите или позвоните.</p>
                 </div>
-                <div class="social-links">
-                    <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <div class="contact-flex">
+                    <div class="contact-info reveal">
+                        <h3>ООО «Цифровые решения»</h3>
+                        <p>Инновационный ИТ-партнёр для бизнеса любого масштаба.</p>
+                        <div class="contact-details">
+                            <p><i class="fas fa-map-marker-alt"></i> г. Абакан, ул. Советская, д. 73, 3 этаж</p>
+                            <p><i class="fas fa-phone-alt"></i> +7 (391) 224-81-58</p>
+                            <p><i class="fas fa-envelope"></i> e@digital19.ru</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form reveal">
+                        <form id="contactForm">
+                            <div class="input-group"><input type="text" placeholder="Ваше имя" required></div>
+                            <div class="input-group"><input type="email" placeholder="Email" required></div>
+                            <div class="input-group"><textarea rows="4"
+                                    placeholder="Опишите проект или задайте вопрос"></textarea></div>
+                            <button type="submit" class="btn-primary" style="background:#2d89d4; border:none;">Отправить
+                                запрос →</button>
+                        </form>
+                        <p id="formMessage" style="margin-top: 16px; font-size:0.85rem;"></p>
+                    </div>
                 </div>
-                </div>
-                <div class="contact-form reveal">
-                <form id="contactForm">
-                    <div class="input-group"><input type="text" placeholder="Ваше имя" required></div>
-                    <div class="input-group"><input type="email" placeholder="Email" required></div>
-                    <div class="input-group"><textarea rows="4" placeholder="Опишите проект или задайте вопрос"></textarea></div>
-                    <button type="submit" class="btn-primary" style="background:#2d89d4; border:none;">Отправить запрос →</button>
-                </form>
-                <p id="formMessage" style="margin-top: 16px; font-size:0.85rem;"></p>
-                </div>
-            </div>
             </div>
         </section>
-        </main>
+    </main>
 
-        <footer>
+    <footer>
         <div class="container">
             <p>© 2026 ООО «Цифровые решения» — инновации, разработка и безопасность. Все права защищены.</p>
         </div>
-        </footer>
+    </footer>
 
-        <script src="./js/app.js"></script>
-    </body>
+    <script src="./js/app.js"></script>
+</body>
+
 </html>
