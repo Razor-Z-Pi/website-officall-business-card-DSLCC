@@ -23,13 +23,28 @@ const portfolioData = [
 ];
 
 const techStackItems = [
+    { icon: "fa-brands fa-html5", name: "HTML", desc: "Frontend" },
+    { icon: "fa-brands fa-css3", name: "CSS", desc: "Frontend" },
+    { icon: "fa-brands fa-less", name: "LESS", desc: "Frontend" },
+    { icon: "fa-brands fa-js", name: "JS", desc: "Frontend" },
     { icon: "fab fa-react", name: "React", desc: "Frontend" },
-    { icon: "fab fa-vuejs", name: "Vue.js", desc: "SPA" },
+    { icon: "fab fa-vuejs", name: "Vue.js", desc: "Frontend" },
     { icon: "fab fa-node-js", name: "Node.js", desc: "Backend" },
-    { icon: "fab fa-python", name: "Python", desc: "AI/ML" },
-    { icon: "fab fa-php", name: "PHP", desc: "Laravel" },
-    { icon: "fas fa-cloud", name: "Docker", desc: "DevOps" },
-    { icon: "fas fa-database", name: "PostgreSQL", desc: "Базы данных" },
+    { icon: "fab fa-node-js", name: "Next.js", desc: "Full-stack" },
+    { icon: "fab fa-python", name: "Python", desc: "Scripts, backend, bots, AI/ML" },
+    { icon: "fa-regular fa-gem", name: "Ruby", desc: "Backend" },
+    { icon: "fab fa-php", name: "PHP", desc: "Backend" },
+    { icon: "fa-brands fa-laravel", name: "Laravel", desc: "Backend" },
+    { icon: "fab fa-php", name: "Yii", desc: "Backend" },
+    { icon: "fa-brands fa-wordpress", name: "WordPress", desc: "Full-stack" },
+    { icon: "fa-brands fa-drupal", name: "Drupal", desc: "Full-stack" },
+    { icon: "fa-brands fa-joomla", name: "Joomla", desc: "Full-stack" },
+    { icon: "fa-brands fa-opencart", name: "Opencart", desc: "Full-stack" },
+    { icon: "fa-brands fa-modx", name: "Modx", desc: "Full-stack" },
+    { icon: "fa-brands fa-postgresql", name: "PostgreSQL", desc: "Базы данных" },
+    { icon: "fas fa-database", name: "MySQL", desc: "Базы данных" },
+    { icon: "fas fa-database", name: "MariaDB", desc: "Базы данных" },
+    { icon: "fas fa-database", name: "MongoDB", desc: "Базы данных" },
     { icon: "fab fa-figma", name: "Figma", desc: "UI/UX" }
 ];
 
@@ -118,7 +133,7 @@ const contactForm = document.getElementById('contactForm');
 const formMsg = document.getElementById('formMessage');
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    formMsg.innerHTML = '<span style="color:#2DD4BF;">✓ Спасибо! Мы свяжемся с вами в ближайшее время.</span>';
+    formMsg.innerHTML = '<span style="color:#2DD4BF;">Спасибо!!! Мы свяжемся с вами в ближайшее время.</span>';
     contactForm.reset();
     setTimeout(() => { formMsg.innerHTML = ''; }, 4000);
 });
