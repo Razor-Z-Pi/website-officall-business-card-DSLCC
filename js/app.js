@@ -22,45 +22,90 @@ const portfolioData = [
     },
 ];
 
-const techStackItems = [
-    { icon: "fa-brands fa-html5", name: "HTML", desc: "Frontend" },
-    { icon: "fa-brands fa-css3", name: "CSS", desc: "Frontend" },
-    { icon: "fa-brands fa-less", name: "LESS", desc: "Frontend" },
-    { icon: "fa-brands fa-js", name: "JS", desc: "Frontend" },
-    { icon: "fab fa-react", name: "React", desc: "Frontend" },
-    { icon: "fab fa-vuejs", name: "Vue.js", desc: "Frontend" },
-    { icon: "fab fa-node-js", name: "Node.js", desc: "Backend" },
-    { icon: "fab fa-node-js", name: "Next.js", desc: "Full-stack" },
-    { icon: "fab fa-python", name: "Python", desc: "Scripts, backend, bots, AI/ML" },
-    { icon: "fa-regular fa-gem", name: "Ruby", desc: "Backend" },
-    { icon: "fab fa-php", name: "PHP", desc: "Backend" },
-    { icon: "fa-brands fa-laravel", name: "Laravel", desc: "Backend" },
-    { icon: "fab fa-php", name: "Yii", desc: "Backend" },
-    { icon: "fa-brands fa-wordpress", name: "WordPress", desc: "Full-stack" },
-    { icon: "fa-brands fa-drupal", name: "Drupal", desc: "Full-stack" },
-    { icon: "fa-brands fa-joomla", name: "Joomla", desc: "Full-stack" },
-    { icon: "fa-brands fa-opencart", name: "Opencart", desc: "Full-stack" },
-    { icon: "fa-brands fa-modx", name: "Modx", desc: "Full-stack" },
-    { icon: "fa-brands fa-postgresql", name: "PostgreSQL", desc: "Базы данных" },
-    { icon: "fas fa-database", name: "MySQL", desc: "Базы данных" },
-    { icon: "fas fa-database", name: "MariaDB", desc: "Базы данных" },
-    { icon: "fas fa-database", name: "MongoDB", desc: "Базы данных" },
-    { icon: "fab fa-figma", name: "Figma", desc: "UI/UX" }
+// Данные для Frontend
+const frontendTech = [
+    { icon: "fab fa-html5", name: "HTML5", desc: "Семантическая вёрстка" },
+    { icon: "fab fa-css3-alt", name: "CSS3", desc: "Адаптивный дизайн" },
+    { icon: "fab fa-less", name: "LESS", desc: "CSS препроцессор" },
+    { icon: "fab fa-js", name: "JavaScript", desc: "ES6+, TypeScript" },
+    { icon: "fab fa-react", name: "React", desc: "Frontend / SPA" },
+    { icon: "fab fa-vuejs", name: "Vue.js", desc: "Frontend / SPA" }
 ];
 
-function renderTechStack() {
-    const container = document.getElementById('techGrid');
-    if (container) {
-        container.innerHTML = techStackItems.map(tech => `
-        <div class="tech-item">
-          <div class="tech-icon"><i class="${tech.icon}"></i></div>
-          <h4>${tech.name}</h4>
-          <p>${tech.desc}</p>
-        </div>
-      `).join('');
-    }
+// Данные для Backend
+const backendTech = [
+    { icon: "fab fa-node-js", name: "Node.js", desc: "Backend / Scripts" },
+    { icon: "fab fa-python", name: "Python", desc: "Backend / AI / ML" },
+    { icon: "fab fa-php", name: "PHP", desc: "Backend" },
+    { icon: "fab fa-laravel", name: "Laravel", desc: "PHP Framework" },
+    { icon: "fas fa-gem", name: "Ruby", desc: "Backend" },
+    { icon: "fab fa-js", name: "Next.js", desc: "Full-stack / React" }
+];
+
+// Данные для Базы данных
+const databaseTech = [
+    { icon: "fas fa-database", name: "PostgreSQL", desc: "Объектно-реляционная БД" },
+    { icon: "fas fa-database", name: "MySQL", desc: "Реляционная БД" },
+    { icon: "fas fa-leaf", name: "MongoDB", desc: "NoSQL / Документо-ориентированная" },
+    { icon: "fas fa-fire", name: "Redis", desc: "In-memory / Кэширование" },
+    { icon: "fas fa-chart-line", name: "Elasticsearch", desc: "Поиск / Аналитика" },
+    { icon: "fas fa-cloud", name: "Firebase", desc: "Realtime / Cloud" }
+];
+
+// Данные для CMS / Движки
+const cmsTech = [
+    { icon: "fab fa-wordpress", name: "WordPress", desc: "CMS / Блоги / Магазины" },
+    { icon: "fab fa-drupal", name: "Drupal", desc: "Enterprise CMS" },
+    { icon: "fab fa-joomla", name: "Joomla", desc: "CMS / Портал" },
+    { icon: "fas fa-shopping-cart", name: "OpenCart", desc: "E-commerce платформа" },
+    { icon: "fas fa-code-branch", name: "Modx", desc: "CMF / Конструктор сайтов" },
+    { icon: "fas fa-cubes", name: "Yii", desc: "PHP Framework" }
+];
+
+function renderTechGrid(containerId, itemsArray) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = itemsArray.map(tech => `
+      <div class="tech-item">
+        <div class="tech-icon"><i class="${tech.icon}"></i></div>
+        <h4>${tech.name}</h4>
+        <p>${tech.desc}</p>
+      </div>
+    `).join('');
 }
-renderTechStack();
+
+// Запуск отрисовки всех блоков
+function renderAllTechStacks() {
+    renderTechGrid('frontendGrid', frontendTech);
+    renderTechGrid('backendGrid', backendTech);
+    renderTechGrid('databaseGrid', databaseTech);
+    renderTechGrid('cmsGrid', cmsTech);
+}
+
+function initTechTabs() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+
+            // Убираем активный класс у всех кнопок и контента
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Добавляем активный класс текущей кнопке и контенту
+            btn.classList.add('active');
+            const activeContent = document.getElementById(tabId);
+            if (activeContent) activeContent.classList.add('active');
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderAllTechStacks();
+    initTechTabs();
+});
 
 const portfolioGrid = document.getElementById('portfolioGrid');
 function buildPortfolio() {

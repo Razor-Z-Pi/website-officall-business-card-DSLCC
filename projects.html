@@ -1,579 +1,84 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Проекты | ООО «Цифровые решения»</title>
-  <meta name="description" content="Портфолио IT-компании «Цифровые решения»: разработка AI-плагинов, корпоративных порталов, мобильных приложений и CRM-систем.">
-  <!-- Font Awesome 6 -->
+  <meta name="description"
+    content="Портфолио IT-компании «Цифровые решения»: разработка AI-плагинов, корпоративных порталов, мобильных приложений и CRM-систем.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #0A0F1A;
-      font-family: 'Inter', sans-serif;
-      color: #E6F1FF;
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
-
-    :root {
-      --bg-dark: #0A0F1A;
-      --bg-card: #0F1728;
-      --accent-cyan: #2DD4BF;
-      --accent-glow: rgba(45, 212, 191, 0.25);
-      --accent-purple: #8B5CF6;
-      --text-light: #F0F9FF;
-      --text-dim: #9CA3AF;
-      --border-dim: #1E2A3A;
-      --transition-smooth: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    }
-
-    /* animated background */
-    .bg-animate {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      background: radial-gradient(circle at 20% 30%, #0A1122, #020617);
-    }
-    
-    .moving-gradient {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: radial-gradient(ellipse at 50% 50%, rgba(45,212,191,0.08) 0%, transparent 70%);
-      animation: breathe 8s ease-in-out infinite;
-      pointer-events: none;
-    }
-    
-    @keyframes breathe {
-      0%, 100% { opacity: 0.4; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.1); }
-    }
-    
-    .grid-lines {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        linear-gradient(rgba(45,212,191,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(45,212,191,0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      z-index: -1;
-      animation: shiftGrid 20s linear infinite;
-      pointer-events: none;
-    }
-    
-    @keyframes shiftGrid {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(50px, 50px); }
-    }
-    
-    .cursor-glow {
-      position: fixed;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(45,212,191,0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.05s;
-      opacity: 0;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 28px;
-      position: relative;
-    }
-
-    /* header */
-    header {
-      padding: 20px 0;
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10, 15, 26, 0.7);
-      border-bottom: 1px solid rgba(45,212,191,0.2);
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .logo h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #FFFFFF, #2DD4BF, #8B5CF6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.02em;
-      animation: shimmer 3s infinite;
-    }
-    
-    @keyframes shimmer {
-      0%, 100% { filter: brightness(1); }
-      50% { filter: brightness(1.1); }
-    }
-    
-    .logo p {
-      font-size: 0.75rem;
-      color: var(--accent-cyan);
-      letter-spacing: 1px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-light);
-      font-weight: 500;
-      transition: var(--transition-smooth);
-      position: relative;
-    }
-    .nav-links a::before {
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      bottom: -6px;
-      left: 0;
-      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-      transition: width 0.3s ease;
-    }
-    .nav-links a:hover::before, .nav-links a.active::before {
-      width: 100%;
-    }
-    .nav-links a:hover {
-      color: var(--accent-cyan);
-      transform: translateY(-2px);
-    }
-
-    .burger {
-      display: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: var(--accent-cyan);
-      transition: transform 0.2s;
-    }
-    .burger:hover { transform: scale(1.1); }
-
-    /* buttons */
-    .btn {
-      display: inline-block;
-      background: transparent;
-      border: 1.5px solid var(--accent-cyan);
-      color: var(--accent-cyan);
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 600;
-      transition: var(--transition-smooth);
-      cursor: pointer;
-      text-decoration: none;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(45,212,191,0.3);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-    }
-    
-    .btn:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-    
-    .btn-outline:hover {
-      background: rgba(45,212,191,0.1);
-      transform: translateY(-2px);
-    }
-    
-    /* page header */
-    .page-header {
-      padding: 60px 0 40px;
-    }
-    .page-header h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #FFFFFF, var(--accent-cyan));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 16px;
-    }
-    
-    /* project cards (детальные) */
-    .projects-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
-      margin-bottom: 80px;
-    }
-    
-    .project-detail-card {
-      background: linear-gradient(135deg, rgba(15, 23, 40, 0.7), rgba(10, 15, 26, 0.9));
-      border-radius: 40px;
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(45,212,191,0.2);
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      overflow: hidden;
-    }
-    
-    .project-detail-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--accent-cyan);
-      box-shadow: 0 30px 40px -20px rgba(45,212,191,0.3);
-    }
-    
-    .project-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 32px;
-      padding: 40px;
-    }
-    
-    .project-icon {
-      flex-shrink: 0;
-      width: 100px;
-      height: 100px;
-      background: rgba(45,212,191,0.1);
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.5rem;
-      color: var(--accent-cyan);
-      transition: transform 0.3s;
-    }
-    
-    .project-detail-card:hover .project-icon {
-      transform: scale(1.05) rotate(5deg);
-    }
-    
-    .project-info {
-      flex: 1;
-    }
-    
-    .project-info h2 {
-      font-size: 1.8rem;
-      margin-bottom: 12px;
-      color: var(--text-light);
-    }
-    
-    .project-short-desc {
-      color: var(--accent-cyan);
-      font-size: 1.1rem;
-      font-weight: 500;
-      margin-bottom: 20px;
-      border-left: 3px solid var(--accent-cyan);
-      padding-left: 16px;
-    }
-    
-    .project-full-desc {
-      color: var(--text-dim);
-      line-height: 1.7;
-      margin-bottom: 24px;
-    }
-    
-    .tech-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-    
-    .tech-badge {
-      background: rgba(45,212,191,0.15);
-      padding: 6px 16px;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-    
-    .tech-badge:hover {
-      background: var(--accent-cyan);
-      color: #0A0F1A;
-      transform: translateY(-2px);
-    }
-    
-    .project-link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, var(--accent-cyan), #1a9f8f);
-      color: #0A0F1A;
-      padding: 12px 28px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-    
-    .project-link-btn:hover {
-      transform: translateX(8px);
-      box-shadow: 0 5px 20px rgba(45,212,191,0.4);
-    }
-    
-    .back-home {
-      margin: 40px 0;
-      text-align: center;
-    }
-    
-    footer {
-      border-top: 1px solid var(--border-dim);
-      padding: 32px 0;
-      text-align: center;
-      color: var(--text-dim);
-    }
-    
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    @media (max-width: 768px) {
-      .project-content {
-        padding: 28px;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .project-short-desc {
-        border-left: none;
-        border-top: 3px solid var(--accent-cyan);
-        padding-top: 12px;
-        padding-left: 0;
-      }
-      .page-header h1 { font-size: 2.2rem; }
-      .nav-links {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        text-align: center;
-        padding: 24px 0;
-      }
-      .nav-links.show { display: flex; }
-      .burger { display: block; }
-    }
-  </style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="./style/normalize.css">
+    <link rel="stylesheet" href="./style/project.css">
 </head>
+
 <body>
-<div class="bg-animate"></div>
-<div class="moving-gradient"></div>
-<div class="grid-lines"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<header>
-  <div class="container">
-    <div class="navbar">
-      <a href="index.html" style="text-decoration: none;">
-        <div class="logo">
-          <h1>Цифровые<span style="color:#2DD4BF;"> решения</span></h1>
-          <p>IT-интеграция & инновации</p>
-        </div>
-      </a>
-      <div class="burger" id="burgerMenu"><i class="fas fa-bars"></i></div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="projects.html" class="active">Проекты</a></li>
-      </ul>
+  <!-- Лоадер -->
+  <div class="loader-wrapper" id="loaderWrapper">
+    <div class="digital-loader">
+      <div class="loader-ring"></div>
+      <div class="loader-cube"></div>
+      <div class="loader-pixel"></div>
+      <div class="loader-pixel"></div>
+      <div class="loader-pixel"></div>
+      <div class="loader-pixel"></div>
+      <div class="loader-pixel"></div>
+      <div class="loader-pixel"></div>
+      <div class="loader-corner top-left"></div>
+      <div class="loader-corner bottom-right"></div>
     </div>
   </div>
-</header>
 
-<main>
-  <div class="container">
-    <div class="page-header reveal">
-      <h1>Наши проекты</h1>
-      <p class="section-sub" style="font-size: 1.2rem;">Полное портфолио с детальным описанием каждого решения — от идеи до внедрения</p>
-    </div>
-    
-    <div class="projects-grid" id="projectsGrid"></div>
-    
-    <div class="back-home reveal">
-      <a href="index.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Вернуться на главную</a>
-    </div>
-  </div>
-</main>
+  <div class="bg-animate"></div>
+  <div class="moving-gradient"></div>
+  <div class="grid-lines"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
 
-<footer>
-  <div class="container">
-    <p>© 2025 ООО «Цифровые решения» — инновации, код и безопасность. Все права защищены.</p>
-  </div>
-</footer>
-
-<script>
-  // Полные данные проектов (вы можете легко добавлять новые проекты сюда)
-  const fullProjects = [
-    { 
-      id: 1, 
-      title: "Разработка AI-плагина для WordPress", 
-      shortDesc: "Интеллектуальный плагин для автоматической генерации контента и SEO-оптимизации",
-      fullDesc: "Плагин использует GPT-4 для автоматической генерации уникальных статей, мета-тегов и перевода контента на 12 языков. Реализована кэширующая прослойка на Redis, админ-панель с настройкой промптов и мультисайтовость. Решение обработало более 5000 запросов в день, увеличив скорость наполнения контента в 10 раз. Клиент — крупное медиа-агентство с сетью из 50+ сайтов.",
-      tech: ["PHP", "WordPress", "OpenAI API", "Redis", "JavaScript", "REST API"],
-      link: "https://example.com/ai-plugin",
-      icon: "fa-plug",
-      linkText: "Посмотреть демо плагина"
-    },
-    { 
-      id: 2, 
-      title: "Корпоративный портал «Цифровой офис»", 
-      shortDesc: "Единая платформа для управления задачами, документами и коммуникацией",
-      fullDesc: "Полноценная экосистема для компаний с численностью 2000+ сотрудников. Включает модули: управление проектами, документооборот, HR-портал, бухгалтерский учет, складской учет. Интеграция с 1С и Active Directory. Разработана система аналитики на базе Power BI с 50+ дашбордами. Автоматизация бизнес-процессов сократила операционные затраты на 30%.",
-      tech: ["React", "Node.js", "PostgreSQL", "Docker", "Kafka", "Power BI"],
-      link: "https://example.com/digitaloffice",
-      icon: "fa-building",
-      linkText: "Посмотреть кейс"
-    },
-    { 
-      id: 3, 
-      title: "Мобильное приложение для доставки «ExpressEats»", 
-      shortDesc: "Кроссплатформенное приложение с трекингом курьера и системой лояльности",
-      fullDesc: "Приложение для заказа еды с геолокацией в реальном времени. Реализованы push-уведомления о статусе заказа, интеграция с платежными системами (Stripe, PayPal), чат поддержки с AI-ассистентом. Система лояльности с накоплением баллов. Приложение установлено более 100 000 раз, средний рейтинг в App Store и Google Play — 4.8. Время доставки сократилось на 25% за счет оптимизации маршрутов.",
-      tech: ["Flutter", "Firebase", "Google Maps API", "Stripe", "Node.js"],
-      link: "https://example.com/expresseats",
-      icon: "fa-motorcycle",
-      linkText: "Скачать приложение"
-    },
-    { 
-      id: 4, 
-      title: "CRM-система для ритейла «SmartRetail»", 
-      shortDesc: "Облачная CRM с AI-аналитикой поведения покупателей и прогнозированием спроса",
-      fullDesc: "Интеллектуальная CRM для розничных сетей с функцией прогнозирования спроса на основе машинного обучения. Анализирует историю покупок, сезонность и поведенческие факторы. Интеграция с кассовым ПО (более 20 форматов). 50+ интерактивных дашбордов для топ-менеджмента. Помогла увеличить конверсию на 35% за 6 месяцев. Масштабируется до 1 млн активных клиентов.",
-      tech: ["Vue.js", "Django", "MongoDB", "TensorFlow", "Redis", "Celery"],
-      link: "https://example.com/smartretail",
-      icon: "fa-chart-line",
-      linkText: "Запросить демо"
-    },
-    { 
-      id: 5, 
-      title: "Платформа для онлайн-образования «EduSpace»", 
-      shortDesc: "LMS с видеоконференциями, тестированием и системой сертификации",
-      fullDesc: "Полноценная образовательная платформа для проведения вебинаров, курсов и экзаменов. Встроенная видео-конференция на WebRTC, система автоматической проверки тестов, конструктор курсов. Поддержка до 10 000 одновременных пользователей. Интеграция с 1С для учета обучения сотрудников. Выдано более 50 000 сертификатов.",
-      tech: ["Next.js", "WebRTC", "Python", "PostgreSQL", "AWS S3", "Redis"],
-      link: "https://example.com/eduspace",
-      icon: "fa-graduation-cap",
-      linkText: "Посмотреть платформу"
-    }
-  ];
-
-  function renderProjects() {
-    const container = document.getElementById('projectsGrid');
-    if (!container) return;
-    
-    container.innerHTML = fullProjects.map(project => `
-      <div class="project-detail-card reveal" id="project-${project.id}">
-        <div class="project-content">
-          <div class="project-icon">
-            <i class="fas ${project.icon}"></i>
+  <header>
+    <div class="container">
+      <div class="navbar">
+        <a href="index.html" style="text-decoration: none;">
+          <div class="logo">
+            <h1>Цифровые<span style="color:#2DD4BF;"> решения</span></h1>
+            <p>IT-интеграция & инновации</p>
           </div>
-          <div class="project-info">
-            <h2>${project.title}</h2>
-            <div class="project-short-desc">${project.shortDesc}</div>
-            <div class="project-full-desc">${project.fullDesc}</div>
-            <div class="tech-badges">
-              ${project.tech.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
-            </div>
-            <a href="${project.link}" target="_blank" class="project-link-btn">
-              ${project.linkText} <i class="fas fa-external-link-alt"></i>
-            </a>
-          </div>
-        </div>
+        </a>
+        <div class="burger" id="burgerMenu"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="projects.html" class="active">Проекты</a></li>
+        </ul>
       </div>
-    `).join('');
-    
-    // Обработка якорных ссылок из главной страницы (например projects.html#project-1)
-    if (window.location.hash) {
-      const targetId = window.location.hash.substring(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        setTimeout(() => {
-          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 300);
-      }
-    }
-  }
+    </div>
+  </header>
 
-  // Burger menu
-  const burger = document.getElementById('burgerMenu');
-  const navLinks = document.getElementById('navLinks');
-  if (burger) {
-    burger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
-  }
+  <main>
+    <div class="container">
+      <div class="page-header reveal">
+        <h1>Наши проекты</h1>
+        <p class="section-sub" style="font-size: 1.2rem;">Полное портфолио с детальным описанием каждого решения — от
+          идеи до внедрения</p>
+      </div>
 
-  // Reveal animation
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { threshold: 0.15 });
-  
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+      <div class="projects-grid" id="projectsGrid"></div>
 
-  // Cursor glow effect
-  const cursorGlow = document.getElementById('cursorGlow');
-  document.addEventListener('mousemove', (e) => {
-    if (cursorGlow) {
-      cursorGlow.style.opacity = '0.6';
-      cursorGlow.style.left = e.clientX + 'px';
-      cursorGlow.style.top = e.clientY + 'px';
-    }
-  });
-  document.addEventListener('mouseleave', () => {
-    if (cursorGlow) cursorGlow.style.opacity = '0';
-  });
+      <div class="back-home reveal">
+        <a href="index.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Вернуться на главную</a>
+      </div>
+    </div>
+  </main>
 
-  // Initialize
-  renderProjects();
-  
-  // Trigger initial reveal
-  setTimeout(() => {
-    document.querySelectorAll('.reveal').forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-        el.classList.add('active');
-      }
-    });
-  }, 100);
-</script>
+  <footer>
+    <div class="container">
+      <p>© 2026 ООО «Цифровые решения» — инновации, разработка и безопасность. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script src="./js/project.js"></script>
+  <script src="./js/loader.js"></script>
 </body>
+
 </html>

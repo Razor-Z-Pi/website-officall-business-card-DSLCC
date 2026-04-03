@@ -14,6 +14,22 @@
 </head>
 
 <body>
+    <!-- Лоадер -->
+    <div class="loader-wrapper" id="loaderWrapper">
+        <div class="digital-loader">
+            <div class="loader-ring"></div>
+            <div class="loader-cube"></div>
+            <div class="loader-pixel"></div>
+            <div class="loader-pixel"></div>
+            <div class="loader-pixel"></div>
+            <div class="loader-pixel"></div>
+            <div class="loader-pixel"></div>
+            <div class="loader-pixel"></div>
+            <div class="loader-corner top-left"></div>
+            <div class="loader-corner bottom-right"></div>
+        </div>
+    </div>
+
     <div class="bg-animate"></div>
     <div class="moving-gradient"></div>
     <div class="grid-lines"></div>
@@ -71,8 +87,29 @@
                     <p class="section-sub">Современные инструменты, которые мы используем для создания продуктов
                         премиум-класса</p>
                 </div>
+
                 <div class="tech-stack reveal">
-                    <div class="tech-grid" id="techGrid"></div>
+                    <!-- Табы для переключения категорий -->
+                    <div class="tech-tabs">
+                        <button class="tab-btn active" data-tab="frontend">Frontend</button>
+                        <button class="tab-btn" data-tab="backend">Backend</button>
+                        <button class="tab-btn" data-tab="database">Базы данных</button>
+                        <button class="tab-btn" data-tab="cms">CMS / Движки</button>
+                    </div>
+
+                    <!-- Контент для вкладок -->
+                    <div class="tab-content active" id="frontend">
+                        <div class="tech-grid" id="frontendGrid"></div>
+                    </div>
+                    <div class="tab-content" id="backend">
+                        <div class="tech-grid" id="backendGrid"></div>
+                    </div>
+                    <div class="tab-content" id="database">
+                        <div class="tech-grid" id="databaseGrid"></div>
+                    </div>
+                    <div class="tab-content" id="cms">
+                        <div class="tech-grid" id="cmsGrid"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -146,7 +183,7 @@
                             <div class="input-group"><textarea rows="4"
                                     placeholder="Опишите проект или задайте вопрос"></textarea></div>
                             <button type="submit" class="btn-primary" style="background:#2d89d4; border:none;">Отправить
-                                запрос →</button>
+                                запрос -></button>
                         </form>
                         <p id="formMessage" style="margin-top: 16px; font-size:0.85rem;"></p>
                     </div>
@@ -162,6 +199,7 @@
     </footer>
 
     <script src="./js/app.js"></script>
+    <script src="./js/loader.js"></script>
 </body>
 
 </html>

@@ -419,6 +419,61 @@ section {
     margin-top: 4px;
 }
 
+.tech-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border-dim);
+    padding-bottom: 16px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.tab-btn:hover {
+    color: var(--accent-cyan);
+    background: rgba(45, 212, 191, 0.1);
+}
+
+.tab-btn.active {
+    color: var(--accent-cyan);
+    background: rgba(45, 212, 191, 0.15);
+    box-shadow: 0 0 10px rgba(45, 212, 191, 0.2);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -600,6 +655,258 @@ footer {
     transform: translateY(0);
 }
 
+/* ===== Лоадер в стиле «Цифровые решения» ===== */
+.loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0A0F1A;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    backdrop-filter: blur(2px);
+}
+
+.loader-wrapper.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Основной контейнер анимации */
+.digital-loader {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+/* Анимированные точки-пиксели (матричный стиль) */
+.loader-pixel {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-cyan);
+    border-radius: 1px;
+    opacity: 0;
+    animation: pixelBlink 1.2s infinite ease-in-out;
+}
+
+/* Расположение точек по кругу */
+.loader-pixel:nth-child(1) {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 0s;
+}
+
+.loader-pixel:nth-child(2) {
+    top: 25%;
+    right: 0;
+    transform: translateX(50%);
+    animation-delay: 0.1s;
+}
+
+.loader-pixel:nth-child(3) {
+    bottom: 25%;
+    right: 0;
+    transform: translateX(50%);
+    animation-delay: 0.2s;
+}
+
+.loader-pixel:nth-child(4) {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 0.3s;
+}
+
+.loader-pixel:nth-child(5) {
+    bottom: 25%;
+    left: 0;
+    transform: translateX(-50%);
+    animation-delay: 0.4s;
+}
+
+.loader-pixel:nth-child(6) {
+    top: 25%;
+    left: 0;
+    transform: translateX(-50%);
+    animation-delay: 0.5s;
+}
+
+@keyframes pixelBlink {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+        background: var(--accent-cyan);
+        box-shadow: 0 0 8px var(--accent-cyan);
+    }
+}
+
+/* Центральный вращающийся куб */
+.loader-cube {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    animation: cubeRotate 1.5s infinite ease-in-out;
+    border-radius: 4px;
+}
+
+@keyframes cubeRotate {
+    0% {
+        transform: rotate(0deg) scale(0.8);
+        opacity: 0.5;
+        border-radius: 4px;
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.1);
+        opacity: 1;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(45, 212, 191, 0.6);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(0.8);
+        opacity: 0.5;
+        border-radius: 4px;
+    }
+}
+
+/* Внешнее кольцо с пунктиром */
+.loader-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px dashed rgba(45, 212, 191, 0.3);
+    border-radius: 50%;
+    animation: ringSpin 3s infinite linear;
+}
+
+.loader-ring::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 1px solid var(--accent-cyan);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: ringPulse 2s infinite ease-out;
+}
+
+@keyframes ringSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ringPulse {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* Светящиеся линии по углам */
+.loader-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.loader-corner::before,
+.loader-corner::after {
+    content: '';
+    position: absolute;
+    background: var(--accent-cyan);
+    transition: all 0.3s;
+}
+
+.loader-corner.top-left {
+    top: -10px;
+    left: -10px;
+}
+
+.loader-corner.top-left::before {
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 15px;
+    animation: cornerGlow 1.2s infinite alternate;
+}
+
+.loader-corner.top-left::after {
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 2px;
+    animation: cornerGlow 1.2s infinite alternate 0.3s;
+}
+
+.loader-corner.bottom-right {
+    bottom: -10px;
+    right: -10px;
+}
+
+.loader-corner.bottom-right::before {
+    bottom: 0;
+    right: 0;
+    width: 2px;
+    height: 15px;
+    animation: cornerGlow 1.2s infinite alternate 0.6s;
+}
+
+.loader-corner.bottom-right::after {
+    bottom: 0;
+    right: 0;
+    width: 15px;
+    height: 2px;
+    animation: cornerGlow 1.2s infinite alternate 0.9s;
+}
+
+@keyframes cornerGlow {
+    0% {
+        opacity: 0.3;
+        box-shadow: 0 0 2px var(--accent-cyan);
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 10px var(--accent-cyan);
+    }
+}
+
+/*Адаптив*/
+
 @media (max-width: 880px) {
     .nav-links {
         display: none;
@@ -628,6 +935,35 @@ footer {
 
     section {
         padding: 60px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .digital-loader {
+        width: 90px;
+        height: 90px;
+    }
+
+    .loader-cube {
+        width: 30px;
+        height: 30px;
+        margin: -15px 0 0 -15px;
+    }
+
+    .loader-pixel {
+        width: 6px;
+        height: 6px;
+    }
+}
+
+@media (max-width: 680px) {
+    .tech-tabs {
+        justify-content: center;
+    }
+
+    .tab-btn {
+        padding: 6px 16px;
+        font-size: 0.85rem;
     }
 }
 
