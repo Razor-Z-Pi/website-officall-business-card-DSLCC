@@ -11,8 +11,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap"
     rel="stylesheet">
-    <link rel="stylesheet" href="./style/normalize.css">
-    <link rel="stylesheet" href="./style/project.css">
+  <link rel="stylesheet" href="./style/normalize.css">
+  <link rel="stylesheet" href="./style/style.css">
+  <link rel="stylesheet" href="./style/project.css">
 </head>
 
 <body>
@@ -29,6 +30,25 @@
       <div class="loader-pixel"></div>
       <div class="loader-corner top-left"></div>
       <div class="loader-corner bottom-right"></div>
+    </div>
+  </div>
+
+  <div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <div class="cookie-icon">
+          <i class="fas fa-cookie-bite"></i>
+        </div>
+        <p>
+          Мы используем файлы cookie для улучшения работы сайта, анализа трафика и персонализации контента.
+          Продолжая использовать наш сайт, вы соглашаетесь с
+          <a href="#" id="privacyPolicyLink">политикой конфиденциальности</a>.
+        </p>
+      </div>
+      <div class="cookie-buttons">
+        <button class="cookie-btn cookie-btn-decline" id="declineCookies">Отклонить</button>
+        <button class="cookie-btn cookie-btn-accept" id="acceptCookies">Принять</button>
+      </div>
     </div>
   </div>
 
@@ -73,12 +93,17 @@
 
   <footer>
     <div class="container">
-      <p>© 2026 ООО «Цифровые решения» — инновации, разработка и безопасность. Все права защищены.</p>
+      <p>
+        © 2026 ООО «Цифровые Решения» — инновации, разработка и безопасность. Все права защищены.<br>
+        Обращаем Ваше внимание на то, что данный интернет-сайт носит исключительно информационный и ознакомительный характер и ни при каких условиях информационные материалы и цены, размещенные на сайте, не являются публичной офертой, определяемой положениями ст. 437 ГК РФ. 
+        <br>ИНН: 1903029041, ОГРН: 1191901004151, Общество с ограниченной ответственностью «Цифровые Решения».
+      </p>
     </div>
   </footer>
 
   <script src="./js/project.js"></script>
   <script src="./js/loader.js"></script>
+  <script src="./js/cookie.js"></script>
 </body>
 
 </html>
