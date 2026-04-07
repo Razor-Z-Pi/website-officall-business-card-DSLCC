@@ -26,40 +26,60 @@ const portfolioData = [
 const frontendTech = [
     { icon: "fab fa-html5", name: "HTML5", desc: "Семантическая вёрстка" },
     { icon: "fab fa-css3-alt", name: "CSS3", desc: "Адаптивный дизайн" },
+    { icon: "fab fa-css3-alt", name: "Tailwind CSS", desc: "CSS-фреймворк" },
+    { icon: "fab fa-css3-alt", name: "Bootstrap", desc: "CSS-библиотека" },
     { icon: "fab fa-less", name: "LESS", desc: "CSS препроцессор" },
-    { icon: "fab fa-js", name: "JavaScript", desc: "ES6+, TypeScript" },
+    { icon: "fab fa-scss", name: "SASS", desc: "CSS препроцессор" },
+    { icon: "fab fa-sass", name: "SCSS", desc: "CSS препроцессор" },
+    { icon: "fab fa-js", name: "JavaScript", desc: "ES6+, автоматизация, скрипты, интерактивность" },
+    { icon: "fab fa-js", name: "jQuery", desc: "Cкрипты, автоматизация, интерактивность" },
+    { icon: "fab fa-ts", name: "TypeScript", desc: "Frontend" },
     { icon: "fab fa-react", name: "React", desc: "Frontend / SPA" },
-    { icon: "fab fa-vuejs", name: "Vue.js", desc: "Frontend / SPA" }
+    { icon: "fab fa-react", name: "Redax", desc: "Управления состоянием приложения" },
+    { icon: "fab fa-vuejs", name: "Vue.js", desc: "Frontend / SPA" },
+    { icon: "fab fa-react", name: "Vuex", desc: "Управления состоянием приложения" },
+    { icon: "fab fa-react", name: "Backbone.js", desc: "Frontend" },
 ];
 
 // Данные для Backend
 const backendTech = [
-    { icon: "fab fa-node-js", name: "Node.js", desc: "Backend / Scripts" },
-    { icon: "fab fa-python", name: "Python", desc: "Backend / AI / ML" },
-    { icon: "fab fa-php", name: "PHP", desc: "Backend" },
-    { icon: "fab fa-laravel", name: "Laravel", desc: "PHP Framework" },
+    { icon: "fab fa-php", name: "PHP", desc: "Backend, плагины, скрипты" },
+    { icon: "fab fa-python", name: "Python", desc: "Backend / скрипты / боты / анализ данных, автоматизация" },
     { icon: "fas fa-gem", name: "Ruby", desc: "Backend" },
-    { icon: "fab fa-js", name: "Next.js", desc: "Full-stack / React" }
+    { icon: "fas fa-gem", name: "C#", desc: "Backend" },
+    { icon: "fab fa-laravel", name: "Laravel", desc: "PHP Framework" },
+    { icon: "fas fa-cubes", name: "Yii", desc: "PHP Framework" },
+    { icon: "fab fa-node-js", name: "Node.js", desc: "Backend / Scripts" },
+    { icon: "fab fa-js", name: "Next.js", desc: "Full-stack / React" },
+
 ];
 
 // Данные для Базы данных
 const databaseTech = [
     { icon: "fas fa-database", name: "PostgreSQL", desc: "Объектно-реляционная БД" },
     { icon: "fas fa-database", name: "MySQL", desc: "Реляционная БД" },
+    { icon: "fas fa-database", name: "MariaDB", desc: "Реляционная БД" },
+    { icon: "fas fa-database", name: "MSSQLServer", desc: "Реляционная БД" },
     { icon: "fas fa-leaf", name: "MongoDB", desc: "NoSQL / Документо-ориентированная" },
     { icon: "fas fa-fire", name: "Redis", desc: "In-memory / Кэширование" },
-    { icon: "fas fa-chart-line", name: "Elasticsearch", desc: "Поиск / Аналитика" },
-    { icon: "fas fa-cloud", name: "Firebase", desc: "Realtime / Cloud" }
+    { icon: "fas fa-fire", name: "Cassandra", desc: "СУБД / NoSQL-система" },
 ];
 
-// Данные для CMS / Движки
+// Данные для CMS / Движки / Конструкторы / Сервера
 const cmsTech = [
     { icon: "fab fa-wordpress", name: "WordPress", desc: "CMS / Блоги / Магазины" },
+    { icon: "fab fa-wordpress", name: "WooCommerce", desc: "Инструмент в электронной коммерции" },
+    { icon: "fab fa-wordpress", name: "1С-Битрикс", desc: "CMS / Блоги / Магазины" },
+    { icon: "fab fa-wordpress", name: "UMI.CMS", desc: "CMS / Блоги / Магазины" },
+    { icon: "fab fa-wordpress", name: "OctoberCMS", desc: "CMS / Блоги / Магазины" },
+    { icon: "fab fa-wordpress", name: "HostCMS", desc: "CMS / Блоги / Магазины" },
+    { icon: "fab fa-wordpress", name: "NetCat CMS", desc: "CMS / Блоги / Магазины" },
     { icon: "fab fa-drupal", name: "Drupal", desc: "Enterprise CMS" },
     { icon: "fab fa-joomla", name: "Joomla", desc: "CMS / Портал" },
     { icon: "fas fa-shopping-cart", name: "OpenCart", desc: "E-commerce платформа" },
+    { icon: "fas fa-shopping-cart", name: "Magento", desc: "E-commerce платформа" },
     { icon: "fas fa-code-branch", name: "Modx", desc: "CMF / Конструктор сайтов" },
-    { icon: "fas fa-cubes", name: "Yii", desc: "PHP Framework" }
+    { icon: "fas fa-code-branch", name: "phpBB", desc: "Конструктор веб-форум" },
 ];
 
 function renderTechGrid(containerId, itemsArray) {
