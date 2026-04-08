@@ -24,62 +24,62 @@ const portfolioData = [
 
 // Данные для Frontend
 const frontendTech = [
-    { icon: "fab fa-html5", name: "HTML5", desc: "Семантическая вёрстка" },
-    { icon: "fab fa-css3-alt", name: "CSS3", desc: "Адаптивный дизайн" },
-    { icon: "fab fa-css3-alt", name: "Tailwind CSS", desc: "CSS-фреймворк" },
-    { icon: "fab fa-css3-alt", name: "Bootstrap", desc: "CSS-библиотека" },
-    { icon: "fab fa-less", name: "LESS", desc: "CSS препроцессор" },
-    { icon: "fab fa-scss", name: "SASS", desc: "CSS препроцессор" },
-    { icon: "fab fa-sass", name: "SCSS", desc: "CSS препроцессор" },
-    { icon: "fab fa-js", name: "JavaScript", desc: "ES6+, автоматизация, скрипты, интерактивность" },
-    { icon: "fab fa-js", name: "jQuery", desc: "Cкрипты, автоматизация, интерактивность" },
-    { icon: "fab fa-ts", name: "TypeScript", desc: "Frontend" },
-    { icon: "fab fa-react", name: "React", desc: "Frontend / SPA" },
-    { icon: "fab fa-react", name: "Redax", desc: "Управления состоянием приложения" },
-    { icon: "fab fa-vuejs", name: "Vue.js", desc: "Frontend / SPA" },
-    { icon: "fab fa-react", name: "Vuex", desc: "Управления состоянием приложения" },
-    { icon: "fab fa-react", name: "Backbone.js", desc: "Frontend" },
+    { icon: "./image/icon/html5-original.svg", name: "HTML5", desc: "Семантическая вёрстка" },
+    { icon: "./image/icon/css3-original.svg", name: "CSS3", desc: "Адаптивный дизайн" },
+    { icon: "./image/icon/tailwindcss-original.svg", name: "Tailwind CSS", desc: "CSS-фреймворк" },
+    { icon: "./image/icon/bootstrap-original.svg", name: "Bootstrap", desc: "CSS-библиотека" },
+    { icon: "./image/icon/less-plain-wordmark.svg", name: "LESS", desc: "CSS препроцессор" },
+    { icon: "./image/icon/sass-original.svg", name: "SASS", desc: "CSS препроцессор" },
+    { icon: "./image/icon/", name: "SCSS", desc: "CSS препроцессор" },
+    { icon: "./image/icon/javascript-original.svg", name: "JavaScript", desc: "ES6+, автоматизация, скрипты, интерактивность" },
+    { icon: "./image/icon/jquery-original.svg", name: "jQuery", desc: "Cкрипты, автоматизация, интерактивность" },
+    { icon: "./image/icon/typescript-original.svg", name: "TypeScript", desc: "Frontend" },
+    { icon: "./image/icon/react-original-wordmark.svg", name: "React", desc: "Frontend / SPA" },
+    { icon: "./image/icon/redux-original.svg", name: "Redax", desc: "Управления состоянием приложения" },
+    { icon: "./image/icon/vuejs-original.svg", name: "Vue.js", desc: "Frontend / SPA" },
+    { icon: "./image/icon/", name: "Vuex", desc: "Управления состоянием приложения" },
+    { icon: "./image/icon/backbonejs-original.svg", name: "Backbone.js", desc: "Frontend" },
 ];
 
 // Данные для Backend
 const backendTech = [
-    { icon: "fab fa-php", name: "PHP", desc: "Backend, плагины, скрипты" },
-    { icon: "fab fa-python", name: "Python", desc: "Backend / скрипты / боты / анализ данных, автоматизация" },
-    { icon: "fas fa-gem", name: "Ruby", desc: "Backend" },
-    { icon: "fas fa-gem", name: "C#", desc: "Backend" },
-    { icon: "fab fa-laravel", name: "Laravel", desc: "PHP Framework" },
-    { icon: "fas fa-cubes", name: "Yii", desc: "PHP Framework" },
-    { icon: "fab fa-node-js", name: "Node.js", desc: "Backend / Scripts" },
-    { icon: "fab fa-js", name: "Next.js", desc: "Full-stack / React" },
+    { icon: "./image/icon/php-original.svg", name: "PHP", desc: "Backend, плагины, скрипты" },
+    { icon: "./image/icon/python-original.svg", name: "Python", desc: "Backend / скрипты / боты / анализ данных, автоматизация" },
+    { icon: "./image/icon/ruby-original.svg", name: "Ruby", desc: "Backend" },
+    { icon: "./image/icon/csharp-original.svg", name: "C#", desc: "Backend" },
+    { icon: "./image/icon/laravel-original.svg", name: "Laravel", desc: "PHP Framework" },
+    { icon: "./image/icon/yii-original.svg", name: "Yii", desc: "PHP Framework" },
+    { icon: "./image/icon/nodejs-original.svg", name: "Node.js", desc: "Backend / Scripts" },
+    { icon: "./image/icon/nextjs-line.svg", name: "Next.js", desc: "Full-stack / React" },
 
 ];
 
 // Данные для Базы данных
 const databaseTech = [
-    { icon: "fas fa-database", name: "PostgreSQL", desc: "Объектно-реляционная БД" },
-    { icon: "fas fa-database", name: "MySQL", desc: "Реляционная БД" },
-    { icon: "fas fa-database", name: "MariaDB", desc: "Реляционная БД" },
-    { icon: "fas fa-database", name: "MSSQLServer", desc: "Реляционная БД" },
-    { icon: "fas fa-leaf", name: "MongoDB", desc: "NoSQL / Документо-ориентированная" },
-    { icon: "fas fa-fire", name: "Redis", desc: "In-memory / Кэширование" },
-    { icon: "fas fa-fire", name: "Cassandra", desc: "СУБД / NoSQL-система" },
+    { icon: "./image/icon/postgresql-original.svg", name: "PostgreSQL", desc: "Объектно-реляционная БД" },
+    { icon: "./image/icon/mysql-original-wordmark.svg", name: "MySQL", desc: "Реляционная БД" },
+    { icon: "./image/icon/mariadb-original-wordmark", name: "MariaDB", desc: "Реляционная БД" },
+    { icon: "./image/icon/", name: "MSSQLServer", desc: "Реляционная БД" },
+    { icon: "./image/icon/mongodb-original.svg", name: "MongoDB", desc: "NoSQL / Документо-ориентированная" },
+    { icon: "./image/icon/redis-original.svg", name: "Redis", desc: "In-memory / Кэширование" },
+    { icon: "./image/icon/cassandra-original.svg", name: "Cassandra", desc: "СУБД / NoSQL-система" },
 ];
 
 // Данные для CMS / Движки / Конструкторы / Сервера
 const cmsTech = [
-    { icon: "fab fa-wordpress", name: "WordPress", desc: "CMS / Блоги / Магазины" },
-    { icon: "fab fa-wordpress", name: "WooCommerce", desc: "Инструмент в электронной коммерции" },
-    { icon: "fab fa-wordpress", name: "1С-Битрикс", desc: "CMS / Блоги / Магазины" },
-    { icon: "fab fa-wordpress", name: "UMI.CMS", desc: "CMS / Блоги / Магазины" },
-    { icon: "fab fa-wordpress", name: "OctoberCMS", desc: "CMS / Блоги / Магазины" },
-    { icon: "fab fa-wordpress", name: "HostCMS", desc: "CMS / Блоги / Магазины" },
-    { icon: "fab fa-wordpress", name: "NetCat CMS", desc: "CMS / Блоги / Магазины" },
-    { icon: "fab fa-drupal", name: "Drupal", desc: "Enterprise CMS" },
-    { icon: "fab fa-joomla", name: "Joomla", desc: "CMS / Портал" },
-    { icon: "fas fa-shopping-cart", name: "OpenCart", desc: "E-commerce платформа" },
-    { icon: "fas fa-shopping-cart", name: "Magento", desc: "E-commerce платформа" },
-    { icon: "fas fa-code-branch", name: "Modx", desc: "CMF / Конструктор сайтов" },
-    { icon: "fas fa-code-branch", name: "phpBB", desc: "Конструктор веб-форум" },
+    { icon: "./image/icon/wordpress-original.svg", name: "WordPress", desc: "CMS / Блоги / Магазины" },
+    { icon: "./image/icon/woocommerce-original.svg", name: "WooCommerce", desc: "Инструмент в электронной коммерции" },
+    { icon: "./image/icon/", name: "1С-Битрикс", desc: "CMS / Блоги / Магазины" },
+    { icon: "./image/icon/", name: "UMI.CMS", desc: "CMS / Блоги / Магазины" },
+    { icon: "./image/icon/", name: "OctoberCMS", desc: "CMS / Блоги / Магазины" },
+    { icon: "./image/icon/", name: "HostCMS", desc: "CMS / Блоги / Магазины" },
+    { icon: "./image/icon/", name: "NetCat CMS", desc: "CMS / Блоги / Магазины" },
+    { icon: "./image/icon/drupal-original.svg", name: "Drupal", desc: "Enterprise CMS" },
+    { icon: "./image/icon/", name: "Joomla", desc: "CMS / Портал" },
+    { icon: "./image/icon/", name: "OpenCart", desc: "E-commerce платформа" },
+    { icon: "./image/icon/magento-line-wordmark.svg", name: "Magento", desc: "E-commerce платформа" },
+    { icon: "./image/icon/modx-original.svg", name: "Modx", desc: "CMF / Конструктор сайтов" },
+    { icon: "./image/icon/", name: "phpBB", desc: "Конструктор веб-форум" },
 ];
 
 function renderTechGrid(containerId, itemsArray) {
@@ -87,7 +87,7 @@ function renderTechGrid(containerId, itemsArray) {
     if (!container) return;
     container.innerHTML = itemsArray.map(tech => `
       <div class="tech-item">
-        <div class="tech-icon"><i class="${tech.icon}"></i></div>
+        <div class="tech-icon"><img src="${tech.icon}"></img></div>
         <h4>${tech.name}</h4>
         <p>${tech.desc}</p>
       </div>

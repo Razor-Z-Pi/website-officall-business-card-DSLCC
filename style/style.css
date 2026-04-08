@@ -396,12 +396,8 @@ header {
 
 .img-title {
     display: inline-block;
-
-    width: 300px;
-    height: 300px;
-
-    border-radius: 50%;
-    box-shadow: 10px 0 15px -5px rgba(0, 0, 0, 0.5), -10px 0 15px -5px rgba(0, 0, 0, 0.5);
+    width: 500px;
+    height: 500px;
 }
 
 section {
@@ -541,6 +537,11 @@ section {
 
 .tech-item:hover .tech-icon {
     transform: scale(1.1) rotate(5deg);
+}
+
+.tech-icon img {
+    width: 50px;
+    height: 50px;
 }
 
 .tech-item h4 {
@@ -695,6 +696,13 @@ section {
     display: flex;
     align-items: center;
     gap: 14px;
+
+    transition: all .5s ease-in-out;
+}
+
+.contact-details p:hover,
+.contact-details p:focus {
+    color:rgba(62, 180, 248, 0.801)
 }
 
 .contact-details i {
