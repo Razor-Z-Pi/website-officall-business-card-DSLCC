@@ -34,6 +34,49 @@ a {
     --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+.container-logo-liner {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.logo-title {
+    width: 45px;
+    height: 45px;
+    transition: all 0.5s ease-in-out;
+}
+
+.logo-title:hover,
+.logo-title:focus {
+    animation: shakeSmooth 0.4s ease-in-out;
+}
+
+@keyframes shakeSmooth {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(0, -3px);
+    }
+
+    50% {
+        transform: translate(3px, 0);
+    }
+
+    75% {
+        transform: translate(-3px, 3px);
+    }
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .cookie-consent {
     position: fixed;
     bottom: 0;
@@ -249,6 +292,8 @@ header {
     background-clip: text;
     color: transparent;
     letter-spacing: -0.02em;
+
+    margin: 0;
 }
 
 .logo p {
@@ -413,7 +458,7 @@ section {
     margin-bottom: 16px;
 
     text-align: center;
-    
+
     width: 100%;
 }
 
@@ -702,7 +747,7 @@ section {
 
 .contact-details p:hover,
 .contact-details p:focus {
-    color:rgba(62, 180, 248, 0.801)
+    color: rgba(62, 180, 248, 0.801)
 }
 
 .contact-details i {
@@ -1053,6 +1098,64 @@ footer {
     }
 }
 
+/*Пульсация кнопок*/
+
+.btn-pulse {
+    position: relative;
+    animation: btnGlow 2s ease-in-out infinite;
+    overflow: visible;
+}
+
+/* Основной эффект пульсации */
+@keyframes btnGlow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(45, 145, 212, 0.7);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 0 12px rgba(45, 131, 212, 0.2);
+        transform: scale(1.02);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(28, 115, 185, 0);
+        transform: scale(1);
+    }
+}
+
+/* Дополнительная пульсация для ripple-эффекта (волны) */
+.btn-pulse::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(42, 136, 180, 0.3), transparent);
+    border-radius: 40px;
+    transform: translate(-50%, -50%) scale(0);
+    animation: rippleWave 2s infinite;
+    pointer-events: none;
+}
+
+@keyframes rippleWave {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.8;
+    }
+
+    70% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
 /*Адаптив*/
 
 @media (max-width: 880px) {
@@ -1101,6 +1204,20 @@ footer {
     .loader-pixel {
         width: 6px;
         height: 6px;
+    }
+
+    @keyframes btnGlow {
+
+        0%,
+        100% {
+            box-shadow: 0 0 0 0 rgba(22, 133, 177, 0.7);
+            transform: scale(1);
+        }
+
+        50% {
+            box-shadow: 0 0 0 8px rgba(28, 112, 180, 0.2);
+            transform: scale(1.01);
+        }
     }
 }
 
