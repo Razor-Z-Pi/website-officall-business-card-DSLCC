@@ -54,10 +54,12 @@ const backendTech = [
     { icon: "./image/icon/python-original.svg", name: "Python", desc: "Backend / скрипты / боты / анализ данных / автоматизация" },
     { icon: "./image/icon/ruby-original.svg", name: "Ruby", desc: "Backend" },
     { icon: "./image/icon/csharp-original.svg", name: "C#", desc: "Backend" },
-    { icon: "./image/icon/laravel-original.svg", name: "Laravel", desc: "PHP Framework" },
-    { icon: "./image/icon/yii-original.svg", name: "Yii", desc: "PHP Framework" },
+    { icon: "./image/icon/laravel-original.svg", name: "Laravel", desc: "Full-stack / PHP Framework" },
+    { icon: "./image/icon/yii-original.svg", name: "Yii", desc: "Full-stack / PHP Framework" },
     { icon: "./image/icon/nodejs-original.svg", name: "Node.js", desc: "Backend / Scripts" },
     { icon: "./image/icon/nextjs-original.svg", name: "Next.js", desc: "Full-stack / React" },
+    { icon: "./image/icon/django-plain.svg", name: "Django", desc: "Full-stack / Python Framework" },
+    { icon: "./image/icon/flask-original.svg", name: "Flask", desc: "Full-stack / Python Framework" },
 
 ];
 
