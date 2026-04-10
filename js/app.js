@@ -1,21 +1,21 @@
 const portfolioData = [
     {
         title: "Интернет-магазин «Строп-Сибирь»",
-        desc: "Высоконагруженный e-commerce с фильтрами. <br> Разработка html, css, js, php, Wordpress, Woocommerce",
+        desc: "Высоконагруженный e-commerce с фильтрами. <br> Разработка html, css, js, php, WordPress, Woocommerce",
         icon: "./image/project/strop.png",
         link: "https://xn----btbub0agfgbeg3k.xn--p1ai/",
         external: true
     },
     {
         title: "Сайт Автопрокат-42",
-        desc: "Аренда автомобилей. <br> Разработка html, css, js, php, Wordpress, Woocommerce.",
+        desc: "Аренда автомобилей. <br> Разработка html, css, js, php, WordPress, Woocommerce.",
         icon: "./image/project/autopr.png",
         link: "https://xn--42-6kcaj2c1aaiktg.xn--p1ai/",
         external: true
     },
     {
         title: "Сайт БТИ-19",
-        desc: "Оффициальный сайт для ГУП РХ УТИ. <br> Разработка html, css, js, php, Wordpress.",
+        desc: "Оффициальный сайт для ГУП РХ УТИ. <br> Разработка html, css, js, php, WordPress.",
         icon: "./image/project/bti19.png",
         link: "https://bti19.ru/",
         external: true
@@ -25,6 +25,34 @@ const portfolioData = [
         desc: "Оффициальный сайт для Сервис-центра «Админ». <br> Разработка html, css, js",
         icon: "./image/project/admin-center.png",
         link: "https://scadmin.ru/",
+        external: true
+    },
+    {
+        title: "Сайт «Сибиряк»",
+        desc: "Оффициальный сайт для МБУ ДО СШ «Сибиряк». <br> Разработка WordPress",
+        icon: "./image/project/Sibir.png",
+        link: "https://sibiryak19.ru/",
+        external: true
+    },
+    {
+        title: "Сайт «Колосок»",
+        desc: "Оффициальный сайт для детского сайта «Колосок». <br> Разработка WordPress",
+        icon: "./image/project/Colosok.png",
+        link: "https://dou.dskolosok.ru/",
+        external: true
+    },
+    {
+        title: "Сайт «Рябинка»",
+        desc: "Оффициальный сайт для детского сайта «Рябинка». <br> Разработка WordPress",
+        icon: "./image/project/Ribinka.png",
+        link: "https://dsryabinka.ru/",
+        external: true
+    },
+    {
+        title: "Сайт Клиника-Титова.рф",
+        desc: "Оффициальный сайт для медицинской клиники. <br> Разработка WordPress",
+        icon: "./image/project/Medic-Titov.png",
+        link: "https://xn----7sbbh1aaclchxr4cb.xn--p1ai/",
         external: true
     },
 ];
@@ -92,10 +120,10 @@ const cmsTech = [
 ];
 
 const OneCTech = [
-    {icon: "./image/icon/1c.png", name: "1C", desc: "Настройка предприятий и конфигураций / программирование модулей"},
-    {icon: "./image/icon/1c_bitrix.png", name: "1С-Битрикс", desc: "CMS / Блоги / Магазины"},
-    {icon: "./image/icon/1cfresh.png", name: "1C-Fresh", desc: "Облако хранения"},
-    {icon: "./image/icon/Bitrix24.png", name: "Битрикс24", desc: "CRM"},
+    { icon: "./image/icon/1c.png", name: "1C", desc: "Настройка предприятий и конфигураций / программирование модулей" },
+    { icon: "./image/icon/1c_bitrix.png", name: "1С-Битрикс", desc: "CMS / Блоги / Магазины" },
+    { icon: "./image/icon/1cfresh.png", name: "1C-Fresh", desc: "Облако хранения" },
+    { icon: "./image/icon/Bitrix24.png", name: "Битрикс24", desc: "CRM" },
 ];
 
 function renderTechGrid(containerId, itemsArray) {
@@ -211,14 +239,94 @@ window.addEventListener('scroll', () => {
     });
 });
 
-const contactForm = document.getElementById('contactForm');
-const formMsg = document.getElementById('formMessage');
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    formMsg.innerHTML = '<span style="color:#2DD4BF;">Спасибо!!! Мы свяжемся с вами в ближайшее время.</span>';
-    contactForm.reset();
-    setTimeout(() => { formMsg.innerHTML = ''; }, 4000);
-});
+(function initContactForm() {
+    const form = document.getElementById('contactForm');
+    const formMsg = document.getElementById('formMessage');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (!form) return;
+
+    function showMessage(text, isError = false) {
+        formMsg.innerHTML = `<span style="color: ${isError ? '#ff6b6b' : '#2DD4BF'};">${text}</span>`;
+        setTimeout(() => {
+            if (formMsg.innerHTML) formMsg.innerHTML = '';
+        }, 5000);
+    }
+
+    function setButtonLoading(isLoading) {
+        if (!submitBtn) return;
+        submitBtn.disabled = isLoading;
+        submitBtn.style.opacity = isLoading ? '0.6' : '1';
+        submitBtn.innerHTML = isLoading ? 'Отправка... <i class="fas fa-spinner fa-pulse"></i>' : 'Отправить запрос →';
+    }
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('userName')?.value.trim();
+        const email = document.getElementById('userEmail')?.value.trim();
+        const message = document.getElementById('userMessage')?.value.trim();
+
+        // Валидация
+        if (!name) {
+            showMessage('Пожалуйста, введите ваше имя', true);
+            return;
+        }
+
+        if (!email) {
+            showMessage('Пожалуйста, введите ваш email', true);
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showMessage('Пожалуйста, введите корректный email', true);
+            return;
+        }
+
+        if (!message) {
+            showMessage('Пожалуйста, напишите ваше сообщение', true);
+            return;
+        }
+
+        if (message.length < 10) {
+            showMessage('Сообщение должно содержать хотя бы 10 символов', true);
+            return;
+        }
+
+        setButtonLoading(true);
+
+        try {
+            const formData = new URLSearchParams();
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('message', message);
+
+            const response = await fetch('sendmail.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                showMessage('Спасибо!!! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.');
+                form.reset();
+            } else {
+                showMessage('Ошибка!!! ' + (result.message || 'Ошибка отправки'), true);
+            }
+
+        } catch (error) {
+            console.error('Ошибка:', error);
+            showMessage('Ошибка соединения. Пожалуйста, попробуйте позже или напишите нам на e@digital19.ru', true);
+        } finally {
+            setButtonLoading(false);
+        }
+    });
+})();
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

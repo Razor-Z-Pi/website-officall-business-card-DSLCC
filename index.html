@@ -59,19 +59,20 @@
         <div class="container">
             <div class="navbar">
                 <div class="logo">
-                    <a href="index.html" style="text-decoration: none;">
+                    <a href="index.html" style="text-decoration: none;" id="trigger">
                         <div class="logo">
                             <div class="container-logo-liner">
                                 <img class="logo-title" src="./image/logo/logoBulbBrain.png" alt="Цифровые Решения"
                                     srcset="">
                                 <h1>Цифровые<span style="color:#fcfcfc;"> Решения</span></h1>
-                                <!-- <img class="logo-title" src="./image/logo/Imprint.png" alt="Цифровые Решения" srcset=""> -->
+                                <img class="logo-title hidden-object" src="./image/logo/Imprint.png"
+                                    alt="Цифровые Решения" srcset="" id="object">
                             </div>
                             <p>IT-интеграция и инновации</p>
                         </div>
                     </a>
                 </div>
-                <div class="burger" id="burgerMenu">
+                <div style="visibility: hidden;" class="burger" id="burgerMenu">
                     <i class="fas fa-bars"></i>
                 </div>
                 <ul class="nav-links" id="navLinks">
@@ -217,13 +218,20 @@
                     </div>
                     <div class="contact-form reveal">
                         <form id="contactForm">
-                            <div class="input-group"><input type="text" placeholder="Ваше имя" required></div>
-                            <div class="input-group"><input type="email" placeholder="Email" required></div>
-                            <div class="input-group"><textarea rows="4"
-                                    placeholder="Опишите проект или задайте вопрос"></textarea></div>
-                            <button type="submit" class="btn-primary btn-pulse"
-                                style="background:#2d89d4; border:none;">Отправить
-                                запрос -></button>
+                            <div class="input-group">
+                                <input type="text" id="userName" name="name" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" id="userEmail" name="email" placeholder="Email" required>
+                            </div>
+                            <div class="input-group">
+                                <textarea id="userMessage" name="message" rows="4"
+                                    placeholder="Опишите проект или задайте вопрос" required></textarea>
+                            </div>
+                            <button type="submit" id="submitBtn" class="btn-primary btn-pulse"
+                                style="background:#2d89d4; border:none;">
+                                Отправить запрос →
+                            </button>
                         </form>
                         <p id="formMessage" style="margin-top: 16px; font-size:0.85rem;"></p>
                     </div>
@@ -247,6 +255,24 @@
     <script src="./js/app.js"></script>
     <script src="./js/loader.js"></script>
     <script src="./js/cookie.js"></script>
+    <script src="./js/happy.js"></script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=108477628', 'ym');
+
+        ym(108477628, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/108477628&quot; style=" position:absolute; left:-9999px;" alt="" />
+        </div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 </body>
 
 </html>
