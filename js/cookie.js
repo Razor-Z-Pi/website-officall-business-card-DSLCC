@@ -59,12 +59,11 @@
     }
 
     // Политика конфиденциальности — показываем уведомление
-    if (privacyLink) {
-        privacyLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Политика конфиденциальности: Мы собираем только необходимые данные для работы сайта. Подробнее — свяжитесь с нами по email: e@digitalsolutions.ru');
-        });
-    }
+    // if (privacyLink) {
+    //     privacyLink.addEventListener('click', (e) => {
+    //         e.preventDefault(); 
+    //     });
+    // }
 
     // Запускаем проверку после загрузки страницы
     if (document.readyState === 'complete') {

@@ -41,9 +41,11 @@ const fullProjects = [
     },
 ];
 
+let isRendered = false;
+
 function renderProjects() {
     const container = document.getElementById('projectsGrid');
-    if (!container) return;
+    if (!container || isRendered) return;
 
     container.innerHTML = fullProjects.map(project => `
       <div class="project-detail-card reveal" id="project-${project.id}">
@@ -66,6 +68,8 @@ function renderProjects() {
       </div>
     `).join('');
 
+    isRendered = true;
+
     if (window.location.hash) {
         const targetId = window.location.hash.substring(1);
         const targetElement = document.getElementById(targetId);
@@ -76,6 +80,51 @@ function renderProjects() {
         }
     }
 }
+
+function initRevealAnimation() {
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderProjects);
+} else {
+    // DOM уже загружен — отрисовываем сразу
+    renderProjects();
+}
+
+// Дополнительная страховка — отрисовка после полной загрузки страницы
+window.addEventListener('load', function () {
+    // Если по какой-то причине не отрисовалось — отрисовываем
+    if (!isRendered) {
+        console.log('Повторная отрисовка проектов (load)');
+        renderProjects();
+    }
+});
+
+// MutationObserver на случай динамических изменений
+const observer = new MutationObserver(function (mutations) {
+    if (!isRendered && document.getElementById('projectsGrid')) {
+        console.log('Отрисовка проектов (MutationObserver)');
+        renderProjects();
+    }
+});
+observer.observe(document.body, { childList: true, subtree: true });
+
+setTimeout(() => {
+    if (!isRendered) {
+        console.log('Принудительная отрисовка проектов (timeout)');
+        renderProjects();
+    }
+}, 1000);
 
 const burger = document.getElementById('burgerMenu');
 const navLinks = document.getElementById('navLinks');
