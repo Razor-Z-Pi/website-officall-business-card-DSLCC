@@ -117,6 +117,7 @@ const cmsTech = [
     { icon: "./image/icon/magento-line-wordmark.svg", name: "Magento", desc: "E-commerce платформа" },
     { icon: "./image/icon/modx-original.svg", name: "Modx", desc: "CMF / Конструктор сайтов" },
     { icon: "./image/icon/PhpBB.png", name: "phpBB", desc: "Конструктор веб-форум" },
+    { icon: "./image/icon/tilda.png", name: "Tilda", desc: "Конструктор сайтов" },
 ];
 
 const OneCTech = [
@@ -197,9 +198,34 @@ buildPortfolio();
 
 const burger = document.getElementById('burgerMenu');
 const navLinksEl = document.getElementById('navLinks');
-burger.addEventListener('click', () => {
-    navLinksEl.classList.toggle('show');
-});
+// Полноэкранное меню
+(function() {
+    const burger = document.getElementById('burgerMenu');
+    const nav = document.getElementById('navLinks');
+    const overlay = document.getElementById('navOverlay');
+    if (!burger || !nav) return;
+
+    function openMenu() {
+        nav.classList.add('show');
+        if (overlay) overlay.style.display = 'block';
+        burger.innerHTML = '<i class="fas fa-times"></i>';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+        nav.classList.remove('show');
+        if (overlay) overlay.style.display = 'none';
+        burger.innerHTML = '<i class="fas fa-bars"></i>';
+        document.body.style.overflow = '';
+    }
+    burger.onclick = (e) => {
+        e.stopPropagation();
+        if (nav.classList.contains('show')) closeMenu();
+        else openMenu();
+    };
+    if (overlay) overlay.onclick = closeMenu;
+    nav.querySelectorAll('a').forEach(link => link.onclick = closeMenu);
+    window.onresize = () => { if (window.innerWidth > 880) closeMenu(); };
+})();
 
 const navLinksA = document.querySelectorAll('.nav-link');
 navLinksA.forEach(link => {
