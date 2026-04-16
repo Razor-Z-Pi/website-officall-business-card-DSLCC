@@ -15,6 +15,15 @@ function getPostData($key, $default = '') {
 $name = getPostData('name');
 $email = getPostData('email');
 $message = getPostData('message');
+$consent = getPostData('consent');
+
+if ($consent !== 'yes') {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Необходимо дать согласие на обработку персональных данных'
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
+}
 
 // Валидация данных
 $errors = [];

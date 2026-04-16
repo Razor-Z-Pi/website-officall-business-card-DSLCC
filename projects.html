@@ -80,9 +80,9 @@
           <i class="fas fa-bars"></i>
         </div>
 
-        <ul class="nav-links" id="navLinks">
-          <li><a href="index.html">Главная</a></li>
-          <li><a href="projects.html" class="active">Проекты</a></li>
+        <ul class="nav-links fon-black-nav" id="navLinks">
+          <li><a href="index.html" class="nav-link">Главная</a></li>
+          <li><a href="projects.html" class="nav-link active">Проекты</a></li>
         </ul>
       </div>
     </div>
@@ -229,6 +229,20 @@
                   <textarea id="userMessage" name="message" rows="4" placeholder="Опишите проект или задайте вопрос"
                     required></textarea>
                 </div>
+
+                <div class="checkbox-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="privacyConsent" required>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-text">
+                      Я ознакомлен(а) с
+                      <a href="./privacy.html" target="_blank">Политикой обработки персональных данных</a>
+                      и даю согласие на обработку моих данных, включая данные, собираемые с использованием
+                      cookie и аналитических сервисов.
+                    </span>
+                  </label>
+                </div>
+
                 <button type="submit" id="submitBtn" class="btn-primary btn-pulse"
                   style="background:#2d89d4; border:none;">
                   Отправить запрос →
@@ -247,6 +261,14 @@
     </div>
   </main>
 
+  <section class="privacy-block">
+    <div class="container privacy-block-liner">
+      <a class="personal-link-privacy" href="./privacy-personal.html">Использования Cookie-файлов на сайте</a><br>
+      <a class="personal-link-privacy" href="./privacy.html">Политика обработки персональных данных</a><br>
+      <a class="personal-link-privacy" href="./privacy-processing.html">Согласие на обработку персональных данных</a>
+    </div>
+  </section>
+
   <footer>
     <div class="container">
       <p>
@@ -254,9 +276,7 @@
         Обращаем Ваше внимание на то, что данный интернет-сайт носит исключительно информационный и ознакомительный
         характер и ни при каких условиях информационные материалы и цены, размещенные на сайте, не являются публичной
         офертой, определяемой положениями ст. 437 ГК РФ.
-        <br>ИНН: 1903029041, ОГРН: 1191901004151, Общество с ограниченной ответственностью «Цифровые Решения».<br>
-        (<a class="personal-link-privacy" href="./privacy-personal.html">Политика</a>, <a class="personal-link-privacy"
-          href="./privacy-processing.html">Согласие на обработку персональных данных</a>)
+        <br>ИНН: 1903029041, ОГРН: 1191901004151, Общество с ограниченной ответственностью «Цифровые Решения».
       </p>
     </div>
   </footer>

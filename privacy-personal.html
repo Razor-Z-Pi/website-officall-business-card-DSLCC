@@ -25,6 +25,25 @@
     <div class="moving-gradient"></div>
     <div class="grid-lines"></div>
 
+    <div class="cookie-consent" id="cookieConsent">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <div class="cookie-icon">
+                    <i class="fas fa-cookie-bite"></i>
+                </div>
+                <p>
+                    Мы используем файлы cookie для улучшения работы сайта, анализа трафика и персонализации контента.
+                    Продолжая использовать наш сайт, вы соглашаетесь с
+                    <a href="./privacy.html" id="privacyPolicyLink">политикой конфиденциальности</a>.
+                </p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-decline" id="declineCookies">Отклонить</button>
+                <button class="cookie-btn cookie-btn-accept" id="acceptCookies">Принять</button>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="container">
             <div class="navbar">
@@ -183,6 +202,14 @@
         </div>
     </main>
 
+    <section class="privacy-block">
+        <div class="container privacy-block-liner">
+            <a class="personal-link-privacy" href="./privacy-personal.html">Использования Cookie-файлов на сайте</a><br>
+            <a class="personal-link-privacy" href="./privacy.html">Политика обработки персональных данных</a><br>
+            <a class="personal-link-privacy" href="./privacy-processing.html">Согласие на обработку персональных данных</a>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <p>
@@ -191,10 +218,7 @@
                 ознакомительный характер и ни при каких условиях информационные материалы и цены, размещенные на сайте,
                 не являются публичной офертой, определяемой положениями ст. 437 ГК РФ.
                 <br>ИНН: 1903029041, ОГРН: 1191901004151, Общество с ограниченной ответственностью «Цифровые
-                Решения».<br>
-                (<a class="personal-link-privacy" href="./privacy-personal.html">Политика</a>, <a
-                    class="personal-link-privacy" href="./privacy-processing.html">Согласие на обработку персональных
-                    данных</a>)
+                Решения».
             </p>
         </div>
     </footer>
@@ -202,6 +226,7 @@
     <script src="./js/privacy.js"></script>
     <script src="./js/loader.js"></script>
     <script src="./js/happy.js"></script>
+    <script src="./js/cookie.js"></script>
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">

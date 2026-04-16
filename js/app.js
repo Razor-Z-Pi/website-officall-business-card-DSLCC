@@ -127,46 +127,31 @@ const OneCTech = [
     { icon: "./image/icon/Bitrix24.png", name: "Битрикс24", desc: "CRM" },
 ];
 
-function renderTechGrid(containerId, itemsArray) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    container.innerHTML = itemsArray.map(tech => `
-      <div class="tech-item">
-        <div class="tech-icon"><img src="${tech.icon}"></img></div>
-        <h4>${tech.name}</h4>
-        <p>${tech.desc}</p>
-      </div>
-    `).join('');
-}
-
-// Запуск отрисовки всех блоков
-function renderAllTechStacks() {
-    renderTechGrid('frontendGrid', frontendTech);
-    renderTechGrid('backendGrid', backendTech);
-    renderTechGrid('databaseGrid', databaseTech);
-    renderTechGrid('cmsGrid', cmsTech);
-    renderTechGrid("OneCTech", OneCTech);
-}
-
-function initTechTabs() {
+(function initTechTabs() {
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
+
+    if (tabBtns.length === 0) return;
 
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const tabId = btn.getAttribute('data-tab');
-
+            
             // Убираем активный класс у всех кнопок и контента
             tabBtns.forEach(b => b.classList.remove('active'));
             tabContents.forEach(content => content.classList.remove('active'));
-
-            // Добавляем активный класс текущей кнопке и контенту
+            
+            // Добавляем активный класс текущей кнопке
             btn.classList.add('active');
+            
+            // Показываем нужный контент
             const activeContent = document.getElementById(tabId);
-            if (activeContent) activeContent.classList.add('active');
+            if (activeContent) {
+                activeContent.classList.add('active');
+            }
         });
     });
-}
+})();
 
 document.addEventListener('DOMContentLoaded', () => {
     renderAllTechStacks();
@@ -269,6 +254,7 @@ window.addEventListener('scroll', () => {
     const form = document.getElementById('contactForm');
     const formMsg = document.getElementById('formMessage');
     const submitBtn = document.getElementById('submitBtn');
+    const privacyCheckbox = document.getElementById('privacyConsent');
 
     if (!form) return;
 
@@ -320,6 +306,19 @@ window.addEventListener('scroll', () => {
             return;
         }
 
+        if (!isConsentGiven) {
+            showMessage('Пожалуйста, дайте согласие на обработку персональных данных', true);
+            // Добавляем визуальную индикацию ошибки для чекбокса
+            if (privacyCheckbox) {
+                privacyCheckbox.style.outline = '2px solid #ff6b6b';
+                privacyCheckbox.style.outlineOffset = '2px';
+                setTimeout(() => {
+                    privacyCheckbox.style.outline = '';
+                }, 2000);
+            }
+            return;
+        }
+
         setButtonLoading(true);
 
         try {
@@ -327,6 +326,7 @@ window.addEventListener('scroll', () => {
             formData.append('name', name);
             formData.append('email', email);
             formData.append('message', message);
+            formData.append('consent', 'yes');
 
             const response = await fetch('sendmail.php', {
                 method: 'POST',

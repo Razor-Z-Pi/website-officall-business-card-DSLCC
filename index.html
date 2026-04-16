@@ -76,7 +76,7 @@
                         </div>
                     </a>
                 </div>
-                
+
                 <div class="burger" id="burgerMenu">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -132,24 +132,335 @@
                         <button class="tab-btn" data-tab="backend">Backend</button>
                         <button class="tab-btn" data-tab="database">Базы данных</button>
                         <button class="tab-btn" data-tab="cms">CMS / Движки / Конструкторы</button>
-                        <button class="tab-btn" data-tab="1C">1C-Решения</button>
+                        <button class="tab-btn" data-tab="onec">1C-Решения</button>
                     </div>
 
-                    <!-- Контент для вкладок -->
+                    <!-- FRONTEND (активная по умолчанию) -->
                     <div class="tab-content active" id="frontend">
-                        <div class="tech-grid" id="frontendGrid"></div>
+                        <div class="tech-grid">
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/html5-original.svg" alt="HTML5"
+                                        loading="lazy"></div>
+                                <h4>HTML5</h4>
+                                <p>Семантическая вёрстка</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/css3-original.svg" alt="CSS3"
+                                        loading="lazy"></div>
+                                <h4>CSS3</h4>
+                                <p>Адаптивный дизайн</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/tailwindcss-original.svg"
+                                        alt="Tailwind CSS" loading="lazy"></div>
+                                <h4>Tailwind CSS</h4>
+                                <p>CSS-фреймворк</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/bootstrap-original.svg" alt="Bootstrap"
+                                        loading="lazy"></div>
+                                <h4>Bootstrap</h4>
+                                <p>CSS-библиотека</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/less-plain-wordmark.svg" alt="LESS"
+                                        loading="lazy"></div>
+                                <h4>LESS</h4>
+                                <p>CSS препроцессор</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/sass-original.svg" alt="SASS"
+                                        loading="lazy"></div>
+                                <h4>SASS</h4>
+                                <p>CSS препроцессор</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/scss.webp" alt="SCSS" loading="lazy">
+                                </div>
+                                <h4>SCSS</h4>
+                                <p>CSS препроцессор</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/javascript-original.svg" alt="JavaScript"
+                                        loading="lazy"></div>
+                                <h4>JavaScript</h4>
+                                <p>ES6+, автоматизация, скрипты, интерактивность</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/jquery-original.svg" alt="jQuery"
+                                        loading="lazy"></div>
+                                <h4>jQuery</h4>
+                                <p>Скрипты, автоматизация, интерактивность</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/typescript-original.svg" alt="TypeScript"
+                                        loading="lazy"></div>
+                                <h4>TypeScript</h4>
+                                <p>Frontend / API</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/react-original-wordmark.svg" alt="React"
+                                        loading="lazy"></div>
+                                <h4>React</h4>
+                                <p>Frontend / SPA</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/redux-original.svg" alt="Redux"
+                                        loading="lazy"></div>
+                                <h4>Redux</h4>
+                                <p>Управление состоянием приложения</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/vuejs-original.svg" alt="Vue.js"
+                                        loading="lazy"></div>
+                                <h4>Vue.js</h4>
+                                <p>Frontend / SPA</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/vuex.png" alt="Vuex" loading="lazy"></div>
+                                <h4>Vuex</h4>
+                                <p>Управление состоянием приложения</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/backbonejs-original.svg" alt="Backbone.js"
+                                        loading="lazy"></div>
+                                <h4>Backbone.js</h4>
+                                <p>Frontend</p>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- BACKEND -->
                     <div class="tab-content" id="backend">
-                        <div class="tech-grid" id="backendGrid"></div>
+                        <div class="tech-grid">
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/php-original.svg" alt="PHP"
+                                        loading="lazy"></div>
+                                <h4>PHP</h4>
+                                <p>Backend, плагины, скрипты</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/python-original.svg" alt="Python"
+                                        loading="lazy"></div>
+                                <h4>Python</h4>
+                                <p>Backend / скрипты / боты / анализ данных / автоматизация</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/ruby-original.svg" alt="Ruby"
+                                        loading="lazy"></div>
+                                <h4>Ruby</h4>
+                                <p>Backend</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/csharp-original.svg" alt="C#"
+                                        loading="lazy"></div>
+                                <h4>C#</h4>
+                                <p>Backend</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/laravel-original.svg" alt="Laravel"
+                                        loading="lazy"></div>
+                                <h4>Laravel</h4>
+                                <p>Full-stack / PHP Framework</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/yii-original.svg" alt="Yii"
+                                        loading="lazy"></div>
+                                <h4>Yii</h4>
+                                <p>Full-stack / PHP Framework</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/nodejs-original.svg" alt="Node.js"
+                                        loading="lazy"></div>
+                                <h4>Node.js</h4>
+                                <p>Backend / Scripts</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/nextjs-original.svg" alt="Next.js"
+                                        loading="lazy"></div>
+                                <h4>Next.js</h4>
+                                <p>Full-stack / React</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/django-plain.svg" alt="Django"
+                                        loading="lazy"></div>
+                                <h4>Django</h4>
+                                <p>Full-stack / Python Framework</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/flask-original.svg" alt="Flask"
+                                        loading="lazy"></div>
+                                <h4>Flask</h4>
+                                <p>Full-stack / Python Framework</p>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- БАЗЫ ДАННЫХ -->
                     <div class="tab-content" id="database">
-                        <div class="tech-grid" id="databaseGrid"></div>
+                        <div class="tech-grid">
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/postgresql-original.svg" alt="PostgreSQL"
+                                        loading="lazy"></div>
+                                <h4>PostgreSQL</h4>
+                                <p>Объектно-реляционная БД</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/mysql-original-wordmark.svg" alt="MySQL"
+                                        loading="lazy"></div>
+                                <h4>MySQL</h4>
+                                <p>Реляционная БД</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/mariadb-original-wordmark.svg"
+                                        alt="MariaDB" loading="lazy"></div>
+                                <h4>MariaDB</h4>
+                                <p>Реляционная БД</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/microsoft-sql-server.svg"
+                                        alt="MSSQLServer" loading="lazy"></div>
+                                <h4>MSSQLServer</h4>
+                                <p>Реляционная БД</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/mongodb-original.svg" alt="MongoDB"
+                                        loading="lazy"></div>
+                                <h4>MongoDB</h4>
+                                <p>NoSQL / Документо-ориентированная</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/redis-original.svg" alt="Redis"
+                                        loading="lazy"></div>
+                                <h4>Redis</h4>
+                                <p>In-memory / Кэширование</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/cassandra-original.svg" alt="Cassandra"
+                                        loading="lazy"></div>
+                                <h4>Cassandra</h4>
+                                <p>СУБД / NoSQL-система</p>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- CMS / Движки / Конструкторы -->
                     <div class="tab-content" id="cms">
-                        <div class="tech-grid" id="cmsGrid"></div>
+                        <div class="tech-grid">
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/wordpress-original.svg" alt="WordPress"
+                                        loading="lazy"></div>
+                                <h4>WordPress</h4>
+                                <p>CMS / Блоги / Магазины</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/woocommerce-original.svg"
+                                        alt="WooCommerce" loading="lazy"></div>
+                                <h4>WooCommerce</h4>
+                                <p>Инструмент в электронной коммерции</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/1c_bitrix.png" alt="1С-Битрикс"
+                                        loading="lazy"></div>
+                                <h4>1С-Битрикс</h4>
+                                <p>CMS / Блоги / Магазины</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/umi-cms.png" alt="UMI.CMS" loading="lazy">
+                                </div>
+                                <h4>UMI.CMS</h4>
+                                <p>CMS / Блоги / Магазины</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/OcteberCMS.png" alt="OctoberCMS"
+                                        loading="lazy"></div>
+                                <h4>OctoberCMS</h4>
+                                <p>CMS / Блоги / Магазины</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/Host_CMS.png" alt="HostCMS"
+                                        loading="lazy"></div>
+                                <h4>HostCMS</h4>
+                                <p>CMS / Блоги / Магазины</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/Netcat_logo.png" alt="NetCat CMS"
+                                        loading="lazy"></div>
+                                <h4>NetCat CMS</h4>
+                                <p>CMS / Блоги / Магазины</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/drupal-original.svg" alt="Drupal"
+                                        loading="lazy"></div>
+                                <h4>Drupal</h4>
+                                <p>Enterprise CMS</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/joomla.png" alt="Joomla" loading="lazy">
+                                </div>
+                                <h4>Joomla</h4>
+                                <p>CMS / Портал</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/opencart.svg" alt="OpenCart"
+                                        loading="lazy"></div>
+                                <h4>OpenCart</h4>
+                                <p>E-commerce платформа</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/magento-line-wordmark.svg" alt="Magento"
+                                        loading="lazy"></div>
+                                <h4>Magento</h4>
+                                <p>E-commerce платформа</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/modx-original.svg" alt="Modx"
+                                        loading="lazy"></div>
+                                <h4>Modx</h4>
+                                <p>CMF / Конструктор сайтов</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/PhpBB.png" alt="phpBB" loading="lazy">
+                                </div>
+                                <h4>phpBB</h4>
+                                <p>Конструктор веб-форум</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/tilda.png" alt="Tilda" loading="lazy">
+                                </div>
+                                <h4>Tilda</h4>
+                                <p>Конструктор веб-форум</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tab-content" id="1C">
-                        <div class="tech-grid" id="OneCTech"></div>
+
+                    <!-- 1C-РЕШЕНИЯ -->
+                    <div class="tab-content" id="onec">
+                        <div class="tech-grid">
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/1c.png" alt="1C" loading="lazy"></div>
+                                <h4>1C</h4>
+                                <p>Настройка предприятий и конфигураций / программирование модулей</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/1c_bitrix.png" alt="1С-Битрикс"
+                                        loading="lazy"></div>
+                                <h4>1С-Битрикс</h4>
+                                <p>CMS / Блоги / Магазины</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/1cfresh.png" alt="1C-Fresh"
+                                        loading="lazy"></div>
+                                <h4>1C-Fresh</h4>
+                                <p>Облако хранения</p>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon"><img src="./image/icon/Bitrix24.png" alt="Битрикс24"
+                                        loading="lazy"></div>
+                                <h4>Битрикс24</h4>
+                                <p>CRM</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -234,6 +545,22 @@
                                 <textarea id="userMessage" name="message" rows="4"
                                     placeholder="Опишите проект или задайте вопрос" required></textarea>
                             </div>
+
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="privacyConsent" required>
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-text">
+                                        Я ознакомлен(а) с
+                                        <a href="./privacy.html" target="_blank">Политикой обработки персональных
+                                            данных</a>
+                                        и даю согласие на обработку моих данных, включая данные, собираемые с
+                                        использованием
+                                        cookie и аналитических сервисов.
+                                    </span>
+                                </label>
+                            </div>
+
                             <button type="submit" id="submitBtn" class="btn-primary btn-pulse"
                                 style="background:#2d89d4; border:none;">
                                 Отправить запрос →
@@ -246,6 +573,15 @@
         </section>
     </main>
 
+    <section class="privacy-block">
+        <div class="container privacy-block-liner">
+            <a class="personal-link-privacy" href="./privacy-personal.html">Использования Cookie-файлов на сайте</a><br>
+            <a class="personal-link-privacy" href="./privacy.html">Политика обработки персональных данных</a><br>
+            <a class="personal-link-privacy" href="./privacy-processing.html">Согласие на обработку персональных
+                данных</a>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <p>
@@ -254,9 +590,7 @@
                 ознакомительный характер и ни при каких условиях информационные материалы и цены, размещенные на сайте,
                 не являются публичной офертой, определяемой положениями ст. 437 ГК РФ.
                 <br>ИНН: 1903029041, ОГРН: 1191901004151, Общество с ограниченной ответственностью «Цифровые
-                Решения».<br>
-                (<a class="personal-link-privacy" href="./privacy-personal.html">Политика</a>, 
-                <a class="personal-link-privacy" href="./privacy-processing.html">Согласие на обработку персональных данных</a>)
+                Решения».
             </p>
         </div>
     </footer>
