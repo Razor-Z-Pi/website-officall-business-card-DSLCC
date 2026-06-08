@@ -85,6 +85,7 @@
                     <li><a href="#home" data-page="home" class="nav-link active">Главная</a></li>
                     <li><a href="#services" class="nav-link">Услуги</a></li>
                     <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
+                    <li><a href="#partners" class="nav-link">Клиенты и Партнёры</a></li>
                     <li><a href="#contact" class="nav-link">Контакты</a></li>
                     <li><a href="./projects.html" data-page="projects">Собственные решения</a></li>
                 </ul>
@@ -508,6 +509,29 @@
             </div>
         </section>
 
+        <section id="partners" class="partners">
+                <div class="reveal">
+                    <h2 class="section-title">Клиенты и Партнёры</h2>
+                </div>
+
+                <div class="carousel-wrapper">
+                    <div class="carousel-track-container" id="carouselTrack">
+                        <div class="partners-logo" id="logosContainer">
+                            <!-- Логотипы будут динамически скопированы для бесшовности, но сохраним структуру ссылок и изображений -->
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-hint">
+                    <span>Перетащите мышью</span>
+                    <span class="drag-icon">↔</span>
+                    <span>Авто-прокрутка</span>
+                </div>
+                <div class="nav-buttons">
+                    <button class="nav-btn" id="prevBtn" aria-label="Назад">◀</button>
+                    <button class="nav-btn" id="nextBtn" aria-label="Вперед">▶</button>
+                </div>
+        </section>
+
         <section id="contact">
             <div class="container">
                 <div class="reveal">
@@ -599,6 +623,7 @@
     <script src="./js/loader.js"></script>
     <script src="./js/cookie.js"></script>
     <script src="./js/happy.js"></script>
+    <script src="./js/carusel.js"></script>
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">

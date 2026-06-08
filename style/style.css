@@ -829,16 +829,16 @@ section {
     transform: rotate(45deg);
 }
 
-.checkbox-label input:checked ~ .checkmark {
+.checkbox-label input:checked~.checkmark {
     background: var(--accent-cyan);
     border-color: var(--accent-cyan);
 }
 
-.checkbox-label input:checked ~ .checkmark::after {
+.checkbox-label input:checked~.checkmark::after {
     display: block;
 }
 
-.checkbox-label input:focus ~ .checkmark {
+.checkbox-label input:focus~.checkmark {
     box-shadow: 0 0 0 2px rgba(120, 146, 231, 0.3);
 }
 
@@ -858,7 +858,7 @@ section {
 }
 
 /* Ошибка для чекбокса */
-.checkbox-label input:invalid ~ .checkmark {
+.checkbox-label input:invalid~.checkmark {
     border-color: #ff6b6b;
 }
 
@@ -953,6 +953,176 @@ button[type="submit"] {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+}
+
+/* Секция партнёров */
+.partners {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    background: transparent;
+    padding: 2rem 1rem 3rem 1rem;
+}
+
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* контейнер карусели с масками по краям (эффект появления/исчезания) */
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 80px;
+    margin: 1rem 0;
+    /* Маска для плавного исчезновения по бокам */
+    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+/* Область, где происходит перетаскивание и прокрутка */
+.carousel-track-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: grab;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* скрываем скроллбар Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+    transition: scroll-left 0.05s linear;
+}
+
+.carousel-track-container:active {
+    cursor: grabbing;
+}
+
+.carousel-track-container::-webkit-scrollbar {
+    display: none;
+    /* скрываем скроллбар Chrome/Safari */
+}
+
+/* Горизонтальный список логотипов */
+.partners-logo {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.2rem 2rem;
+    width: max-content;
+}
+
+/* карточка логотипа с плавностью */
+.logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    transition: all 0.25s ease;
+    background: transparent;
+    padding: 0.9rem 1.8rem;
+
+    transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.2s;
+}
+
+.logo-item:hover {
+    transform: translateY(-6px) scale(1.02);
+}
+
+.partners-logo-img {
+    height: 90px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+    transition: filter 0.2s;
+}
+
+/* разные размеры для адаптации под оригинальные лого */
+.logo-item img {
+    max-height: 90px;
+    width: auto;
+    display: block;
+}
+
+/* декоративные индикаторы */
+.carousel-hint {
+    margin-top: 1.8rem;
+    font-size: 0.85rem;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: transparent;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 6px 18px;
+    border-radius: 60px;
+    backdrop-filter: blur(4px);
+}
+
+.carousel-hint span {
+    font-weight: 500;
+}
+
+.drag-icon {
+    font-size: 1.2rem;
+    animation: slightMove 1.4s infinite;
+}
+
+@keyframes slightMove {
+    0% {
+        transform: translateX(0px);
+    }
+
+    50% {
+        transform: translateX(4px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+/* кнопки для управления (для удобства, но авто-карусель работает) */
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.nav-btn {
+    background: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 60px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #2c3e4e;
+    font-weight: bold;
+}
+
+.nav-btn:hover {
+    background: var(--accent-cyan);
+    color: white;
+    transform: scale(1.05);
 }
 
 footer {
@@ -1320,7 +1490,7 @@ footer {
         position: fixed;
         left: 0;
         width: 100%;
-        height: 100%;   
+        height: 100%;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -1391,6 +1561,22 @@ footer {
 
     section {
         padding: 60px 0;
+    }
+
+    .partners-logo {
+        gap: 1.8rem;
+    }
+
+    .logo-item {
+        padding: 0.6rem 1.2rem;
+    }
+
+    .logo-item img {
+        max-height: 70px;
+    }
+
+    .section-title {
+        font-size: 2rem;
     }
 }
 
@@ -1488,5 +1674,19 @@ footer {
     .hero-stats {
         flex-direction: column;
         gap: 12px;
+    }
+}
+
+@media (max-width: 550px) {
+    .logo-item img {
+        max-height: 55px;
+    }
+
+    .partners-logo {
+        gap: 1.2rem;
+    }
+
+    .carousel-wrapper {
+        border-radius: 40px;
     }
 }
