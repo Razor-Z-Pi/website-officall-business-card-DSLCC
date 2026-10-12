@@ -111,7 +111,83 @@
                         </div>
                     </div>
                     <div class="hero-visual reveal">
-                        <img class="img-title" src="./image/titleDLCC.png" alt="ООО Цифровые решения">
+                        <div class="scene-3d" id="scene3d">
+                            <!-- 3D-контейнер -->
+                            <div class="bulb-3d" id="bulb3d">
+                                
+                                <!-- Свечение (ореол) -->
+                                <div class="bulb-aura"></div>
+                                
+                                <!-- Стеклянная колба -->
+                                <div class="bulb-glass">
+                                    <!-- Блик на стекле -->
+                                    <div class="glass-highlight"></div>
+                                </div>
+                                
+                                <!-- Мозг внутри -->
+                                <div class="bulb-brain">
+                                    <svg viewBox="0 0 100 100" class="brain-svg">
+                                        <!-- Левое полушарие -->
+                                        <path d="M48,25 C35,22 22,30 20,45 C15,55 20,68 28,75 C32,80 40,82 46,78" 
+                                            fill="none" stroke="url(#brainGrad)" stroke-width="2.5" stroke-linecap="round"/>
+                                        <!-- Правое полушарие -->
+                                        <path d="M52,25 C65,22 78,30 80,45 C85,55 80,68 72,75 C68,80 60,82 54,78" 
+                                            fill="none" stroke="url(#brainGrad)" stroke-width="2.5" stroke-linecap="round"/>
+                                        <!-- Извилины левые -->
+                                        <path d="M28,42 Q38,48 30,55 M35,35 Q42,40 38,50 M42,60 Q35,65 40,72" 
+                                            fill="none" stroke="url(#brainGrad)" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+                                        <!-- Извилины правые -->
+                                        <path d="M72,42 Q62,48 70,55 M65,35 Q58,40 62,50 M58,60 Q65,65 60,72" 
+                                            fill="none" stroke="url(#brainGrad)" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+                                        <!-- Центральная линия -->
+                                        <path d="M50,28 L50,75" fill="none" stroke="url(#brainGrad)" stroke-width="1.5" opacity="0.5"/>
+                                        
+                                        <!-- Градиент для свечения мозга -->
+                                        <defs>
+                                            <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#a5b8ff"/>
+                                                <stop offset="50%" stop-color="#4d7cff"/>
+                                                <stop offset="100%" stop-color="#2d5bff"/>
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                    <!-- Пульсирующие нейроны -->
+                                    <div class="neuron neuron-1"></div>
+                                    <div class="neuron neuron-2"></div>
+                                    <div class="neuron neuron-3"></div>
+                                </div>
+                                
+                                <!-- Цоколь -->
+                                <div class="bulb-base">
+                                    <div class="base-ring"></div>
+                                    <div class="base-ring"></div>
+                                    <div class="base-ring"></div>
+                                </div>
+                                
+                                <!-- Лучи света -->
+                                <div class="bulb-rays">
+                                    <div class="ray"></div>
+                                    <div class="ray"></div>
+                                    <div class="ray"></div>
+                                    <div class="ray"></div>
+                                    <div class="ray"></div>
+                                    <div class="ray"></div>
+                                    <div class="ray"></div>
+                                    <div class="ray"></div>
+                                </div>
+                                
+                                <!-- Летящие частицы (идеи) -->
+                                <div class="particles">
+                                    <span class="particle"></span>
+                                    <span class="particle"></span>
+                                    <span class="particle"></span>
+                                    <span class="particle"></span>
+                                    <span class="particle"></span>
+                                    <span class="particle"></span>
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -545,7 +621,7 @@
                         <p>Инновационный ИТ-партнёр для бизнеса любого масштаба.</p>
                         <div class="contact-details">
                             <p><i class="fas fa-map-marker-alt"></i> <a href="https://yandex.ru/maps/-/CPfwBBNd"
-                                    target="_blank">г. Абакан, ул. Советская, д. 73, 3 этаж, 301 кабинет</a></p>
+                                    target="_blank">г. Абакан, ул. Вяткина, 39, 3 этаж, 310 офис</a></p>
                             <p><i class="fas fa-phone-alt"></i> <a href="tel:83912248158">+7 (3902) 24-81-58</a></p>
                             <p><i class="fas fa-envelope"></i> <a href="mailto:e@digital19.ru">e@digital19.ru</a></p>
                         </div>
@@ -609,6 +685,9 @@
 
     <footer>
         <div class="container">
+            <div class="footer-logo">
+                <img class="logo-title" src="./image/logo/logoBulbBrain.png" alt="Цифровые Решения">
+            </div>
             <p>
                 © 2026 ООО «Цифровые Решения» — инновации, разработка и безопасность. Все права защищены.<br>
                 Обращаем Ваше внимание на то, что данный интернет-сайт носит исключительно информационный и

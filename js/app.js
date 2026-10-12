@@ -368,3 +368,155 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 document.querySelector('.nav-link[href="#home"]').classList.add('active');
 window.dispatchEvent(new Event('scroll'));
+
+document.addEventListener('DOMContentLoaded', () => {
+    const bulb = document.getElementById('bulb3d');
+    const scene = document.getElementById('scene3d');
+
+    if (!bulb || !scene) return;
+
+    // Текущие углы поворота
+    let rotX = 0;
+    let rotY = 0;
+    // Скорость инерции
+    let velocityX = 0;
+    let velocityY = 0;
+
+    // Состояние перетаскивания
+    let isDragging = false;
+    let lastMouseX = 0;
+    let lastMouseY = 0;
+
+    // Чувствительность
+    const SENSITIVITY = 0.5;
+    const WHEEL_SENSITIVITY = 0.3;
+
+    // Применяем трансформацию к лампочке
+    function applyTransform() {
+        bulb.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    }
+
+    bulb.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+        bulb.classList.add('dragging');
+        velocityX = 0;
+        velocityY = 0;
+        e.preventDefault();
+    });
+
+    // МЫШЬ: перетаскивание
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+
+        const deltaX = e.clientX - lastMouseX;
+        const deltaY = e.clientY - lastMouseY;
+
+        rotY += deltaX * SENSITIVITY;
+        rotX -= deltaY * SENSITIVITY;
+
+        // Ограничиваем вертикальный поворот (чтобы не переворачивалась)
+        rotX = Math.max(-60, Math.min(60, rotX));
+
+        // Запоминаем скорость для инерции
+        velocityY = deltaX * SENSITIVITY;
+        velocityX = -deltaY * SENSITIVITY;
+
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+
+        applyTransform();
+    });
+
+    // МЫШЬ: окончание перетаскивания
+    document.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        bulb.classList.remove('dragging');
+    });
+
+    bulb.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        rotY += e.deltaY * WHEEL_SENSITIVITY;
+        applyTransform();
+    }, { passive: false });
+
+    bulb.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+            isDragging = true;
+            lastMouseX = e.touches[0].clientX;
+            lastMouseY = e.touches[0].clientY;
+            bulb.classList.add('dragging');
+            velocityX = 0;
+            velocityY = 0;
+        }
+    }, { passive: true });
+
+    bulb.addEventListener('touchmove', (e) => {
+        if (!isDragging || e.touches.length !== 1) return;
+        e.preventDefault();
+
+        const touch = e.touches[0];
+        const deltaX = touch.clientX - lastMouseX;
+        const deltaY = touch.clientY - lastMouseY;
+
+        rotY += deltaX * SENSITIVITY;
+        rotX -= deltaY * SENSITIVITY;
+        rotX = Math.max(-60, Math.min(60, rotX));
+
+        velocityY = deltaX * SENSITIVITY;
+        velocityX = -deltaY * SENSITIVITY;
+
+        lastMouseX = touch.clientX;
+        lastMouseY = touch.clientY;
+
+        applyTransform();
+    }, { passive: false });
+
+    bulb.addEventListener('touchend', () => {
+        isDragging = false;
+        bulb.classList.remove('dragging');
+    });
+
+    function inertiaLoop() {
+        if (!isDragging) {
+            // Применяем затухание
+            if (Math.abs(velocityY) > 0.01 || Math.abs(velocityX) > 0.01) {
+                rotY += velocityY;
+                rotX += velocityX;
+                rotX = Math.max(-60, Math.min(60, rotX));
+
+                velocityY *= 0.95; // Коэффициент трения
+                velocityX *= 0.95;
+
+                applyTransform();
+            } else {
+                // Плавный возврат к нулю по X, если инерция закончилась
+                if (Math.abs(rotX) > 0.1) {
+                    rotX += (0 - rotX) * 0.03;
+                    applyTransform();
+                }
+            }
+        }
+        requestAnimationFrame(inertiaLoop);
+    }
+    inertiaLoop();
+
+    let hasInteracted = false;
+
+    function autoHint() {
+        if (hasInteracted) return;
+        // Лёгкое покачивание, пока пользователь не тронул лампочку
+        rotY = Math.sin(Date.now() / 2000) * 15;
+        applyTransform();
+        requestAnimationFrame(autoHint);
+    }
+
+    bulb.addEventListener('mousedown', () => { hasInteracted = true; });
+    bulb.addEventListener('touchstart', () => { hasInteracted = true; });
+    bulb.addEventListener('wheel', () => { hasInteracted = true; });
+
+    // Запускаем подсказку через 1 секунду после загрузки
+    setTimeout(autoHint, 1000);
+});

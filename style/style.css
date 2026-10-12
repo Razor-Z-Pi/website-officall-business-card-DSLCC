@@ -445,27 +445,309 @@ header {
 }
 
 .hero-visual {
-    flex: 0.8;
-    text-align: center;
-    font-size: 7rem;
-    animation: floatIcon 3s infinite alternate;
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px; /* Глубина 3D-сцены */
+    padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
-@keyframes floatIcon {
-    0% {
-        transform: translateY(0px);
-    }
-
-    100% {
-        transform: translateY(-15px);
-    }
-}
-
-.img-title {
-    display: inline-block;
-    width: 500px;
+.scene-3d {
+    width: 100%;
+    max-width: 400px;
     height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
 }
+
+.bulb-3d {
+    position: relative;
+    width: 220px;
+    height: 340px;
+    transform-style: preserve-3d;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none; /* Для корректной работы на тач-устройствах */
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+.bulb-3d:active {
+    cursor: grabbing;
+}
+
+/* Отключаем плавание, пока пользователь крутит */
+.bulb-3d.dragging {
+    cursor: grabbing;
+    transition: none; /* Убираем плавность, чтобы вращение было мгновенным */
+}
+
+/* Плавное плавание по умолчанию */
+.bulb-3d:not(.dragging) {
+    animation: bulbFloat 5s ease-in-out infinite;
+}
+
+.bulb-aura {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    transform: translate(-50%, -50%) translateZ(-50px);
+    background: radial-gradient(circle, 
+        rgba(77, 124, 255, 0.5) 0%, 
+        rgba(77, 124, 255, 0.2) 30%, 
+        transparent 70%);
+    border-radius: 50%;
+    filter: blur(20px);
+    animation: auraPulse 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.bulb-glass {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateZ(0);
+    width: 160px;
+    height: 200px;
+    background: radial-gradient(circle at 35% 30%, 
+        rgba(255, 255, 255, 0.25) 0%, 
+        rgba(77, 124, 255, 0.08) 40%, 
+        rgba(10, 15, 26, 0.1) 100%);
+    border: 1.5px solid rgba(120, 146, 231, 0.5);
+    border-radius: 50% 50% 45% 45% / 55% 55% 45% 45%;
+    box-shadow: 
+        inset -10px -10px 30px rgba(77, 124, 255, 0.3),
+        inset 10px 10px 20px rgba(255, 255, 255, 0.1),
+        0 0 40px rgba(77, 124, 255, 0.4),
+        0 0 80px rgba(77, 124, 255, 0.2);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 3;
+}
+
+/* Блик на стекле */
+.glass-highlight {
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    width: 30px;
+    height: 60px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.6), 
+        transparent);
+    border-radius: 50%;
+    filter: blur(4px);
+    transform: rotate(-20deg);
+    animation: highlightShimmer 4s ease-in-out infinite;
+}
+
+.bulb-brain {
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%) translateZ(20px);
+    width: 110px;
+    height: 110px;
+    z-index: 2;
+    animation: brainPulse 2.5s ease-in-out infinite;
+}
+
+.brain-svg {
+    width: 100%;
+    height: 100%;
+    filter: 
+        drop-shadow(0 0 8px rgba(77, 124, 255, 0.9))
+        drop-shadow(0 0 20px rgba(77, 124, 255, 0.6));
+}
+
+/* Пульсирующие нейроны */
+.neuron {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #a5b8ff;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 8px #a5b8ff,
+        0 0 16px #4d7cff;
+    animation: neuronPulse 2s ease-in-out infinite;
+}
+
+.neuron-1 { top: 25%; left: 30%; animation-delay: 0s; }
+.neuron-2 { top: 55%; right: 25%; animation-delay: 0.7s; }
+.neuron-3 { bottom: 20%; left: 45%; animation-delay: 1.4s; }
+
+.bulb-base {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 65px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 4;
+}
+
+.base-ring {
+    width: 100%;
+    height: 12px;
+    background: linear-gradient(180deg, 
+        #4a5a7a 0%, 
+        #1e2a3a 50%, 
+        #3a4a6a 100%);
+    border-radius: 4px;
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(77, 124, 255, 0.2);
+    position: relative;
+}
+
+.base-ring::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: rgba(120, 146, 231, 0.3);
+}
+
+.bulb-rays {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.ray {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(to bottom, 
+        transparent, 
+        rgba(120, 146, 231, 0.8), 
+        transparent);
+    transform-origin: center center;
+    animation: rayShoot 3s ease-in-out infinite;
+}
+
+.ray:nth-child(1) { transform: rotate(0deg) translateY(-180px); animation-delay: 0s; }
+.ray:nth-child(2) { transform: rotate(45deg) translateY(-180px); animation-delay: 0.2s; }
+.ray:nth-child(3) { transform: rotate(90deg) translateY(-180px); animation-delay: 0.4s; }
+.ray:nth-child(4) { transform: rotate(135deg) translateY(-180px); animation-delay: 0.6s; }
+.ray:nth-child(5) { transform: rotate(180deg) translateY(-180px); animation-delay: 0.8s; }
+.ray:nth-child(6) { transform: rotate(225deg) translateY(-180px); animation-delay: 1.0s; }
+.ray:nth-child(7) { transform: rotate(270deg) translateY(-180px); animation-delay: 1.2s; }
+.ray:nth-child(8) { transform: rotate(315deg) translateY(-180px); animation-delay: 1.4s; }
+
+.particles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #a5b8ff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4d7cff, 0 0 16px #2d5bff;
+    opacity: 0;
+    animation: particleRise 4s ease-out infinite;
+}
+
+.particle:nth-child(1) { animation-delay: 0s; --tx: -80px; --ty: -200px; }
+.particle:nth-child(2) { animation-delay: 0.7s; --tx: 60px; --ty: -220px; }
+.particle:nth-child(3) { animation-delay: 1.4s; --tx: -40px; --ty: -240px; }
+.particle:nth-child(4) { animation-delay: 2.1s; --tx: 90px; --ty: -180px; }
+.particle:nth-child(5) { animation-delay: 2.8s; --tx: -100px; --ty: -160px; }
+.particle:nth-child(6) { animation-delay: 3.5s; --tx: 30px; --ty: -260px; }
+
+@keyframes bulbFloat {
+    0%, 100% {
+        transform: translateY(0) rotateY(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotateY(5deg);
+    }
+}
+
+@keyframes auraPulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) translateZ(-50px) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) translateZ(-50px) scale(1.1);
+    }
+}
+
+@keyframes brainPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(77, 124, 255, 0.9)) 
+                drop-shadow(0 0 20px rgba(77, 124, 255, 0.6));
+        transform: translateX(-50%) translateZ(20px) scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 15px rgba(120, 146, 231, 1)) 
+                drop-shadow(0 0 40px rgba(77, 124, 255, 0.9));
+        transform: translateX(-50%) translateZ(20px) scale(1.05);
+    }
+}
+
+@keyframes neuronPulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+@keyframes rayShoot {
+    0%, 100% { opacity: 0; height: 0; }
+    50% { opacity: 1; height: 60px; }
+}
+
+@keyframes particleRise {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0);
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(1);
+    }
+}
+
+@keyframes highlightShimmer {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
 
 section {
     padding: 80px 0;
@@ -1460,7 +1742,51 @@ footer {
     color: #1a9f8f;
 }
 
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.footer-logo .logo-title {
+    width: 60px;
+    height: 60px;
+}
+
 /*Адаптив*/
+
+@media (max-width: 1024px) {
+    .scene-3d {
+        max-width: 320px;
+        height: 420px;
+    }
+
+    .bulb-3d {
+        width: 180px;
+        height: 280px;
+    }
+
+    .bulb-glass {
+        width: 130px;
+        height: 165px;
+    }
+
+    .bulb-brain {
+        width: 90px;
+        height: 90px;
+        top: 45px;
+    }
+
+    .bulb-base {
+        width: 55px;
+        height: 55px;
+    }
+
+    .bulb-aura {
+        width: 320px;
+        height: 320px;
+    }
+}
 
 @media (max-width: 880px) {
     .burger {
@@ -1614,6 +1940,49 @@ footer {
     .img-title {
         width: 450px;
         height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-visual {
+        padding: 10px;
+    }
+
+    .scene-3d {
+        max-width: 260px;
+        height: 340px;
+    }
+
+    .bulb-3d {
+        width: 150px;
+        height: 230px;
+    }
+
+    .bulb-glass {
+        width: 110px;
+        height: 140px;
+        top: 25px;
+    }
+
+    .bulb-brain {
+        width: 75px;
+        height: 75px;
+        top: 38px;
+    }
+
+    .bulb-base {
+        width: 48px;
+        height: 48px;
+        bottom: 15px;
+    }
+
+    .bulb-aura {
+        width: 260px;
+        height: 260px;
+    }
+
+    .ray {
+        height: 40px;
     }
 }
 
