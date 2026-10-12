@@ -7,6 +7,7 @@
     <title>IT-компания «Цифровые решения»</title>
     <meta name="author" lang="en" content="IT company «Digital Solutions»">
     <meta name="author" lang="ru" content="IT-компания «Цифровые решения»">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap"
@@ -111,85 +112,20 @@
                         </div>
                     </div>
                     <div class="hero-visual reveal">
-                        <div class="scene-3d" id="scene3d">
-                            <!-- 3D-контейнер -->
-                            <div class="bulb-3d" id="bulb3d">
-                                
-                                <!-- Свечение (ореол) -->
-                                <div class="bulb-aura"></div>
-                                
-                                <!-- Стеклянная колба -->
-                                <div class="bulb-glass">
-                                    <!-- Блик на стекле -->
-                                    <div class="glass-highlight"></div>
-                                </div>
-                                
-                                <!-- Мозг внутри -->
-                                <div class="bulb-brain">
-                                    <svg viewBox="0 0 100 100" class="brain-svg">
-                                        <!-- Левое полушарие -->
-                                        <path d="M48,25 C35,22 22,30 20,45 C15,55 20,68 28,75 C32,80 40,82 46,78" 
-                                            fill="none" stroke="url(#brainGrad)" stroke-width="2.5" stroke-linecap="round"/>
-                                        <!-- Правое полушарие -->
-                                        <path d="M52,25 C65,22 78,30 80,45 C85,55 80,68 72,75 C68,80 60,82 54,78" 
-                                            fill="none" stroke="url(#brainGrad)" stroke-width="2.5" stroke-linecap="round"/>
-                                        <!-- Извилины левые -->
-                                        <path d="M28,42 Q38,48 30,55 M35,35 Q42,40 38,50 M42,60 Q35,65 40,72" 
-                                            fill="none" stroke="url(#brainGrad)" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
-                                        <!-- Извилины правые -->
-                                        <path d="M72,42 Q62,48 70,55 M65,35 Q58,40 62,50 M58,60 Q65,65 60,72" 
-                                            fill="none" stroke="url(#brainGrad)" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
-                                        <!-- Центральная линия -->
-                                        <path d="M50,28 L50,75" fill="none" stroke="url(#brainGrad)" stroke-width="1.5" opacity="0.5"/>
-                                        
-                                        <!-- Градиент для свечения мозга -->
-                                        <defs>
-                                            <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                <stop offset="0%" stop-color="#a5b8ff"/>
-                                                <stop offset="50%" stop-color="#4d7cff"/>
-                                                <stop offset="100%" stop-color="#2d5bff"/>
-                                            </linearGradient>
-                                        </defs>
-                                    </svg>
-                                    <!-- Пульсирующие нейроны -->
-                                    <div class="neuron neuron-1"></div>
-                                    <div class="neuron neuron-2"></div>
-                                    <div class="neuron neuron-3"></div>
-                                </div>
-                                
-                                <!-- Цоколь -->
-                                <div class="bulb-base">
-                                    <div class="base-ring"></div>
-                                    <div class="base-ring"></div>
-                                    <div class="base-ring"></div>
-                                </div>
-                                
-                                <!-- Лучи света -->
-                                <div class="bulb-rays">
-                                    <div class="ray"></div>
-                                    <div class="ray"></div>
-                                    <div class="ray"></div>
-                                    <div class="ray"></div>
-                                    <div class="ray"></div>
-                                    <div class="ray"></div>
-                                    <div class="ray"></div>
-                                    <div class="ray"></div>
-                                </div>
-                                
-                                <!-- Летящие частицы (идеи) -->
-                                <div class="particles">
-                                    <span class="particle"></span>
-                                    <span class="particle"></span>
-                                    <span class="particle"></span>
-                                    <span class="particle"></span>
-                                    <span class="particle"></span>
-                                    <span class="particle"></span>
-                                </div>
-                                
-                            </div>
+                        <div id="bulb3d-container" class="bulb3d-container">
+                            <!-- Three.js вставит сюда canvas -->
+                        </div>
+                        <div class="bulb3d-hint">
+                            <i class="fas fa-hand-pointer"></i> Покрутите мышью
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="logo-theme">
+                <img class="img-title" src="./image/titleDLCC.png" alt="ООО Цифровые решения">
             </div>
         </section>
 
@@ -590,22 +526,45 @@
                 <h2 class="section-title">Клиенты и Партнёры</h2>
             </div>
 
-            <div class="carousel-wrapper">
-                <!-- ОСНОВНОЙ КОНТЕЙНЕР ДЛЯ ПЕРЕТАСКИВАНИЯ МЫШЬЮ -->
-                <div class="carousel-track-container" id="carouselTrack">
-                    <div class="partners-logo" id="logosContainer">
-                        <!-- Логотипы будут вставлены через JS -->
+            <!-- Bootstrap Carousel: бегущая строка -->
+            <div id="partnersCarousel" class="carousel slide partners-carousel" data-bs-ride="carousel" data-bs-interval="0" data-bs-touch="true" data-bs-pause="false">
+                
+                <div class="carousel-inner">
+                    <!-- Слайд 1 -->
+                    <div class="carousel-item active">
+                        <div class="partners-track">
+                            <div class="partner-logo"><img src="./image/icon/1cfresh.png" alt="1C-Fresh" loading="lazy"></div>
+                            <div class="partner-logo"><img src="./image/icon/Bitrix24.png" alt="Битрикс24" loading="lazy"></div>
+                            <div class="partner-logo"><img src="./image/partners/arda.svg" alt="ARDA" loading="lazy"></div>
+                            <div class="partner-logo"><img src="./image/partners/Yandex_icon.png" alt="Яндекс" loading="lazy"></div>
+                            <div class="partner-logo"><img src="./image/partners/1С.png" alt="1C" loading="lazy"></div>
+                            <div class="partner-logo"><img src="./image/clients/strop.png" alt="СТРОП-СИБИРЬ" loading="lazy"></div>
+                            <div class="partner-logo"><img src="./image/partners/myBisnes.png" alt="Мой бизнес" loading="lazy"></div>
+                        </div>
+                    </div>
+                    <!-- Слайд 2 (для бесшовной прокрутки — те же логотипы) -->
+                    <div class="carousel-item">
+                        <div class="partners-track">
+                            <div class="partner-logo"><img src="./image/icon/1cfresh.png" alt="1C-Fresh" loading="lazy"></div>
+                            <div class="partner-logo"><img src="./image/icon/Bitrix24.png" alt="Битрикс24" loading="lazy"></div>
+                            <div class="partner-logo"><img src="./image/partners/arda.svg" alt="ARDA" loading="lazy"></div>
+                            <div class="partner-logo"><img src="./image/partners/Yandex_icon.png" alt="Яндекс" loading="lazy"></div>
+                            <div class="partner-logo"><img src="./image/partners/1С.png" alt="1C" loading="lazy"></div>
+                            <div class="partner-logo"><img src="./image/clients/strop.png" alt="СТРОП-СИБИРЬ" loading="lazy"></div>
+                            <div class="partner-logo"><img src="./image/partners/myBisnes.png" alt="Мой бизнес" loading="lazy"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="carousel-hint">
-                <span>Зажми и перетащи мышью</span>
-                <span class="drag-icon">&#8596;</span>
-            </div>
-            <div class="nav-buttons">
-                <button class="nav-btn" id="prevBtn" aria-label="Назад">&#9664;</button>
-                <button class="nav-btn" id="nextBtn" aria-label="Вперед">&#9654;</button>
+                <!-- Кнопки управления -->
+                <div class="partners-controls">
+                    <button class="partners-btn" type="button" data-bs-target="#partnersCarousel" data-bs-slide="prev" aria-label="Назад">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="partners-btn" type="button" data-bs-target="#partnersCarousel" data-bs-slide="next" aria-label="Вперёд">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -699,6 +658,16 @@
         </div>
     </footer>
 
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="./js/bulb3d.js"></script>
+
     <script src="./js/app.js"></script>
     <script src="./js/loader.js"></script>
     <script src="./js/cookie.js"></script>
@@ -721,6 +690,7 @@
         </div>
     </noscript>
     <!-- /Yandex.Metrika counter -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
