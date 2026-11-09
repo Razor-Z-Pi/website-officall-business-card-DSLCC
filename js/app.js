@@ -153,11 +153,6 @@ const OneCTech = [
     });
 })();
 
-document.addEventListener('DOMContentLoaded', () => {
-    renderAllTechStacks();
-    initTechTabs();
-});
-
 const portfolioGrid = document.getElementById('portfolioGrid');
 function buildPortfolio() {
     portfolioGrid.innerHTML = '';

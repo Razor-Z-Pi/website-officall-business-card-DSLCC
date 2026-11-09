@@ -1554,7 +1554,7 @@ footer {
         transition: all 0.4s ease;
         margin: 0;
         padding: 0;
-        margin-top: 450px;
+        margin-top: 100%;
     }
 
     .nav-links.show {
